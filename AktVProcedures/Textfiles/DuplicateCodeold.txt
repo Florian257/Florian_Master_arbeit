@@ -1,0 +1,120 @@
+string yName1
+	String baseName1 = "fs_reduced_w"
+				sprintf yName1, "%s%s", baseName1
+						duplicate /O ::reduced_w $yName1
+	string yName2
+	String baseName2 = "fs_Summe"
+				sprintf yName2, "%s%s", timedelay1, baseName2
+						duplicate /O ::Summe $yName2
+   	string yName3
+	String baseName3 = "fs_MedianEnergy"
+				sprintf yName3, "%s%s", timedelay1, baseName3
+						duplicate /O ::MedianEnergy $yName3
+	string yName4
+	String baseName4 = "fs_EnergyIntHoles"
+				sprintf yName4, "%s%s", timedelay1, baseName4
+						duplicate /O ::EnergyIntHoles $yName4
+   	string yName5
+	String baseName5 = "fs_EnergyIntHolesx"
+				sprintf yName5, "%s%s", timedelay1, baseName5
+						duplicate /O ::EnergyIntHolesx $yName5
+	string yName6
+	String baseName6 = "fs_Holes_0"
+				sprintf yName6, "%s%s", timedelay1, baseName6
+						duplicate /O ::Holes_0 $yName6
+   	string yName7
+	String baseName7 = "fs_Holes_1"
+				sprintf yName7, "%s%s", timedelay1, baseName7
+						duplicate /O ::Holes_1 $yName7
+	string yName8
+	String baseName8 = "fs_Holes_2"
+				sprintf yName8, "%s%s", timedelay1, baseName8
+						duplicate /O ::Holes_2 $yName8
+	string yName9
+	String baseName9 = "fs_Holes_3"
+				sprintf yName9, "%s%s", timedelay1, baseName9
+						duplicate /O ::Holes_3 $yName9
+	string yName10
+	String baseName10 = "fs_Holes_4"
+				sprintf yName10, "%s%s", timedelay1, baseName10
+						duplicate /O ::Holes_4 $yName10
+   	string yName11
+	String baseName11 = "fs_Holes_5"
+				sprintf yName11, "%s%s", timedelay1, baseName11
+						duplicate /O ::Holes_5 $yName11
+	string yName12
+	String baseName12 = "fs_SummeW"
+				sprintf yName12, "%s%s", timedelay1, baseName12
+						duplicate /O ::SummeW $yName12
+	string yName13
+	String baseName13 = "fs_EnergyIntElectronsW"
+				sprintf yName13, "%s%s", timedelay1, baseName13
+						duplicate /O ::EnergyIntElectronsW $yName13
+	string yName14
+	String baseName14 = "fs_Electrons_0"
+				sprintf yName14, "%s%s", timedelay1, baseName14
+						duplicate /O ::Electrons_0 $yName14
+   	string yName15
+	String baseName15 = "fs_Electrons_1"
+				sprintf yName15, "%s%s", timedelay1, baseName15
+						duplicate /O ::Electrons_1 $yName15
+	string yName16
+	String baseName16 = "fs_Electrons_2"
+				sprintf yName16, "%s%s", timedelay1, baseName16
+						duplicate /O ::Electrons_2 $yName16
+	string yName17
+	String baseName17 = "fs_Electrons_3"
+				sprintf yName17, "%s%s", timedelay1, baseName17
+						duplicate /O ::Electrons_3 $yName17
+	string yName18
+	String baseName18 = "fs_Electrons_4"
+				sprintf yName18, "%s%s", timedelay1, baseName18
+						duplicate /O ::Electrons_4 $yName18
+   	string yName19
+	String baseName19 = "fs_Electrons_5"
+				sprintf yName19, "%s%s", timedelay1, baseName19
+						duplicate /O ::Electrons_5 $yName19
+	string yName20
+	String baseName20 = "fs_Electrons_6"
+				sprintf yName20, "%s%s", timedelay1, baseName20
+						duplicate /O ::Electrons_6 $yName20
+	string yName21
+	String baseName21 = "fs_Electrons_7"
+				sprintf yName21, "%s%s", timedelay1, baseName21
+						duplicate /O ::Electrons_7 $yName21
+	string yName22
+	String baseName22 = "fs_Electrons_8"
+				sprintf yName22, "%s%s", timedelay1, baseName22
+						duplicate /O ::Electrons_8 $yName22
+   	string yName23
+	String baseName23 = "fs_Electrons_9"
+				sprintf yName23, "%s%s", timedelay1, baseName23
+						duplicate /O ::Electrons_9 $yName23
+	string yName24
+	String baseName24 = "fs_Electrons_10"
+				sprintf yName24, "%s%s", timedelay1, baseName24
+						duplicate /O ::Electrons_10 $yName24
+	string yName25
+	String baseName25 = "fs_Electrons_11"
+				sprintf yName25, "%s%s", timedelay1, baseName25
+						duplicate /O ::Electrons_11 $yName25
+	string yName26
+	String baseName26 = "fs_Electrons_12"
+				sprintf yName26, "%s%s", timedelay1, baseName26
+						duplicate /O ::Electrons_12 $yName26
+   	string yName27
+	String baseName27 = "fs_Electrons_13"
+				sprintf yName27, "%s%s", timedelay1, baseName27
+						duplicate /O ::Electrons_13 $yName27
+	string yName28
+	String baseName28 = "fs_Electrons_14"
+				sprintf yName28, "%s%s", timedelay1, baseName28
+						duplicate /O ::Electrons_14 $yName28
+	string yName29
+	String baseName29 = "fs_EnergyIntElectrons"
+				sprintf yName29, "%s%s", timedelay1, baseName29
+						duplicate /O ::EnergyIntElectrons $yName29
+	string yName30
+	String baseName30 = "fs_EnergyIntElectronsx"
+				sprintf yName30, "%s%s", timedelay1, baseName30
+						duplicate /O ::EnergyIntElectronsx $yName30

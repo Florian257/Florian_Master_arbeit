@@ -1,0 +1,249 @@
+//#########################################################
+Function MoveData(makefolder)
+variable makefolder
+string foldername = "UsedData"
+SetDataFolder Datafolder
+if(makefolder == 1)
+NewDataFolder /O $foldername
+endif
+
+SetDataFolder UsedData
+	    String xName
+    Prompt xName, "Enter timedelay of dataset"
+    DoPrompt "Enter timedelay of dataset", xName
+   	string yName1
+	String baseName1 = "fs_reduced_w"
+				sprintf yName1, "%s%s", xName, baseName1
+						duplicate /O ::reduced_w $yName1
+	string yName2
+	String baseName2 = "fs_Summe"
+				sprintf yName2, "%s%s", xName, baseName2
+						duplicate /O ::Summe $yName2
+   	string yName3
+	String baseName3 = "fs_MedianEnergy"
+				sprintf yName3, "%s%s", xName, baseName3
+						duplicate /O ::MedianEnergy $yName3
+	string yName4
+	String baseName4 = "fs_EnergyInt"
+				sprintf yName4, "%s%s", xName, baseName4
+						duplicate /O ::EnergyInt $yName4
+   	string yName5
+	String baseName5 = "fs_EnergyIntx"
+				sprintf yName5, "%s%s", xName, baseName5
+						duplicate /O ::EnergyIntx $yName5
+	string yName6
+	String baseName6 = "fs_Energystep0"
+				sprintf yName6, "%s%s", xName, baseName6
+						duplicate /O ::Energystep0 $yName6
+   	string yName7
+	String baseName7 = "fs_Energystep1"
+				sprintf yName7, "%s%s", xName, baseName7
+						duplicate /O ::Energystep1 $yName7
+	string yName8
+	String baseName8 = "fs_Energystep2"
+				sprintf yName8, "%s%s", xName, baseName8
+						duplicate /O ::Energystep2 $yName8
+	string yName9
+	String baseName9 = "fs_Energystep3"
+				sprintf yName9, "%s%s", xName, baseName9
+						duplicate /O ::Energystep3 $yName9
+	string yName10
+	String baseName10 = "fs_Energystep4"
+				sprintf yName10, "%s%s", xName, baseName10
+						duplicate /O ::Energystep4 $yName10
+   	string yName11
+	String baseName11 = "fs_Energystep5"
+				sprintf yName11, "%s%s", xName, baseName11
+						duplicate /O ::Energystep5 $yName11
+	string yName12
+	String baseName12 = "fs_SummeW"
+				sprintf yName12, "%s%s", xName, baseName12
+						duplicate /O ::SummeW $yName12
+	string yName13
+	String baseName13 = "fs_EnergyIntW"
+				sprintf yName13, "%s%s", xName, baseName13
+						duplicate /O ::EnergyIntW $yName13
+	string yName14
+	String baseName14 = "fs_EnergystepW0"
+				sprintf yName14, "%s%s", xName, baseName14
+						duplicate /O ::EnergystepW0 $yName14
+   	string yName15
+	String baseName15 = "fs_EnergystepW1"
+				sprintf yName15, "%s%s", xName, baseName15
+						duplicate /O ::EnergystepW1 $yName15
+	string yName16
+	String baseName16 = "fs_EnergystepW2"
+				sprintf yName16, "%s%s", xName, baseName16
+						duplicate /O ::EnergystepW2 $yName16
+	string yName17
+	String baseName17 = "fs_EnergystepW3"
+				sprintf yName17, "%s%s", xName, baseName17
+						duplicate /O ::EnergystepW3 $yName17
+	string yName18
+	String baseName18 = "fs_EnergystepW4"
+				sprintf yName18, "%s%s", xName, baseName18
+						duplicate /O ::EnergystepW4 $yName18
+   	string yName19
+	String baseName19 = "fs_EnergystepW5"
+				sprintf yName19, "%s%s", xName, baseName19
+						duplicate /O ::EnergystepW5 $yName19
+	string yName20
+	String baseName20 = "fs_EnergystepW6"
+				sprintf yName20, "%s%s", xName, baseName20
+						duplicate /O ::EnergystepW6 $yName20
+	string yName21
+	String baseName21 = "fs_EnergystepW7"
+				sprintf yName21, "%s%s", xName, baseName21
+						duplicate /O ::EnergystepW7 $yName21
+	string yName22
+	String baseName22 = "fs_EnergystepW8"
+				sprintf yName22, "%s%s", xName, baseName22
+						duplicate /O ::EnergystepW8 $yName22
+   	string yName23
+	String baseName23 = "fs_EnergystepW9"
+				sprintf yName23, "%s%s", xName, baseName23
+						duplicate /O ::EnergystepW9 $yName23
+	string yName24
+	String baseName24 = "fs_EnergystepW10"
+				sprintf yName24, "%s%s", xName, baseName24
+						duplicate /O ::EnergystepW10 $yName24
+	string yName25
+	String baseName25 = "fs_EnergystepW11"
+				sprintf yName25, "%s%s", xName, baseName25
+						duplicate /O ::EnergystepW11 $yName25
+	string yName26
+	String baseName26 = "fs_EnergystepW12"
+				sprintf yName26, "%s%s", xName, baseName26
+						duplicate /O ::EnergystepW12 $yName26
+   	string yName27
+	String baseName27 = "fs_EnergystepW13"
+				sprintf yName27, "%s%s", xName, baseName27
+						duplicate /O ::EnergystepW13 $yName27
+	string yName28
+	String baseName28 = "fs_EnergystepW14"
+				sprintf yName28, "%s%s", xName, baseName28
+						duplicate /O ::EnergystepW14 $yName28
+		
+SetDataFolder ::
+Killwaves reduced_w Summe MedianEnergy EnergyInt EnergyIntx SummeW EnergyIntW EnergystepW0 EnergystepW1 EnergystepW2 EnergystepW3 EnergystepW4 EnergystepW5 EnergystepW6 EnergystepW7 EnergystepW8 EnergystepW9 EnergystepW10 EnergystepW11 EnergystepW12 EnergystepW13 EnergystepW14 Energystep0 Energystep1 Energystep2 Energystep3 Energystep4 Energystep5
+SetDataFolder ::
+End
+Function Test1()    // Enter wave name through edit box
+
+   
+    String xName
+    Prompt xName, "Enter timedelay of dataset"
+    DoPrompt "Enter timedelay of dataset", xName
+   	string yName1
+	String baseName1 = "fs_reduced_w"
+				sprintf yName1, "%s%s", xName, baseName1
+						duplicate /O reduced_w $yName1
+	string yName2
+	String baseName2 = "fs_Summe"
+				sprintf yName2, "%s%s", xName, baseName2
+						duplicate /O Summe $yName2
+   	string yName3
+	String baseName3 = "fs_MedianEnergy"
+				sprintf yName3, "%s%s", xName, baseName3
+						duplicate /O MedianEnergy $yName3
+	string yName4
+	String baseName4 = "fs_EnergyInt"
+				sprintf yName4, "%s%s", xName, baseName4
+						duplicate /O EnergyInt $yName4
+   	string yName5
+	String baseName5 = "fs_EnergyIntx"
+				sprintf yName5, "%s%s", xName, baseName5
+						duplicate /O EnergyIntx $yName5
+	string yName6
+	String baseName6 = "fs_Energystep0"
+				sprintf yName6, "%s%s", xName, baseName6
+						duplicate /O Energystep0 $yName6
+   	string yName7
+	String baseName7 = "fs_Energystep1"
+				sprintf yName7, "%s%s", xName, baseName7
+						duplicate /O Energystep1 $yName7
+	string yName8
+	String baseName8 = "fs_Energystep2"
+				sprintf yName8, "%s%s", xName, baseName8
+						duplicate /O Energystep2 $yName8
+	string yName9
+	String baseName9 = "fs_Energystep3"
+				sprintf yName9, "%s%s", xName, baseName9
+						duplicate /O Energystep3 $yName9
+	string yName10
+	String baseName10 = "fs_Energystep4"
+				sprintf yName10, "%s%s", xName, baseName10
+						duplicate /O Energystep4 $yName10
+   	string yName11
+	String baseName11 = "fs_Energystep5"
+				sprintf yName11, "%s%s", xName, baseName11
+						duplicate /O Energystep5 $yName11
+	string yName12
+	String baseName12 = "fs_SummeW"
+				sprintf yName12, "%s%s", xName, baseName12
+						duplicate /O SummeW $yName12
+	string yName13
+	String baseName13 = "fs_EnergyIntW"
+				sprintf yName13, "%s%s", xName, baseName13
+						duplicate /O EnergyIntW $yName13
+	string yName14
+	String baseName14 = "fs_EnergystepW0"
+				sprintf yName14, "%s%s", xName, baseName14
+						duplicate /O EnergystepW0 $yName14
+   	string yName15
+	String baseName15 = "fs_EnergystepW1"
+				sprintf yName15, "%s%s", xName, baseName15
+						duplicate /O EnergystepW1 $yName15
+	string yName16
+	String baseName16 = "fs_EnergystepW2"
+				sprintf yName16, "%s%s", xName, baseName16
+						duplicate /O EnergystepW2 $yName16
+	string yName17
+	String baseName17 = "fs_EnergystepW3"
+				sprintf yName17, "%s%s", xName, baseName17
+						duplicate /O EnergystepW3 $yName17
+	string yName18
+	String baseName18 = "fs_EnergystepW4"
+				sprintf yName18, "%s%s", xName, baseName18
+						duplicate /O EnergystepW4 $yName18
+   	string yName19
+	String baseName19 = "fs_EnergystepW5"
+				sprintf yName19, "%s%s", xName, baseName19
+						duplicate /O EnergystepW5 $yName19
+	string yName20
+	String baseName20 = "fs_EnergystepW6"
+				sprintf yName20, "%s%s", xName, baseName20
+						duplicate /O EnergystepW6 $yName20
+	string yName21
+	String baseName21 = "fs_EnergystepW7"
+				sprintf yName21, "%s%s", xName, baseName21
+						duplicate /O EnergystepW7 $yName21
+	string yName22
+	String baseName22 = "fs_EnergystepW8"
+				sprintf yName22, "%s%s", xName, baseName22
+						duplicate /O EnergystepW8 $yName22
+   	string yName23
+	String baseName23 = "fs_EnergystepW9"
+				sprintf yName23, "%s%s", xName, baseName23
+						duplicate /O EnergystepW9 $yName23
+	string yName24
+	String baseName24 = "fs_EnergystepW10"
+				sprintf yName24, "%s%s", xName, baseName24
+						duplicate /O EnergystepW10 $yName24
+	string yName25
+	String baseName25 = "fs_EnergystepW11"
+				sprintf yName25, "%s%s", xName, baseName25
+						duplicate /O EnergystepW11 $yName25
+	string yName26
+	String baseName26 = "fs_EnergystepW12"
+				sprintf yName26, "%s%s", xName, baseName26
+						duplicate /O EnergystepW12 $yName26
+   	string yName27
+	String baseName27 = "fs_EnergystepW13"
+				sprintf yName27, "%s%s", xName, baseName27
+						duplicate /O EnergystepW13 $yName27
+	string yName28
+	String baseName28 = "fs_EnergystepW14"
+				sprintf yName28, "%s%s", xName, baseName28
+						duplicate /O EnergystepW14 $yName28
+End

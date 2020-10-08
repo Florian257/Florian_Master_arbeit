@@ -1,0 +1,17 @@
+;   
+;  IMD Data
+;   
+;  Saved on Fri Jun 19 10:53:22 2020
+;   
+;  Structure: 
+;   
+;  [Fe/Au] multilayer, N=1, d=120.00 A, Gamma=0.583
+;      Fe layer (1), z=70.00 A
+;      Au layer (2), z=50.00 A
+;   
+;  f=1.0000
+;   
+;  z=0.00 A, Lambda=8000.000 A
+;   
+;  Theta [deg] 	A 	A(s) 	A(p)
+       45.000000       0.39771285       0.39771285       0.19400433

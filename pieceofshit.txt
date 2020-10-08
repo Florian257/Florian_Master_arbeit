@@ -1,0 +1,1007 @@
+\documentclass[a4paper,12pt,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[acronym]{glossaries}
+\usepackage{textgreek}
+\usepackage{blindtext} % jep just that
+\usepackage{wrapfig} %% das ist für die im Text eingebauten Figures
+\usepackage[margin=1in,bindingoffset=.2in]{geometry} %titlepage
+\usepackage{float} 
+\usepackage{xcolor}
+\usepackage{adjustbox}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{textcomp}
+\loadglsentries{acronym.bib}
+\usepackage[ddmmyyyy]{datetime} %fürs Datum in der Eigenständigkeitserklärung
+\renewcommand{\dateseparator}{.} %fürs Datum in der Eigenständigkeitserklärung
+
+\newcommand{\fakesection}[1]{%
+\par\refstepcounter{section}% Increase section counter
+\sectionmark{#1}% Add section mark (header)
+	\addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}% Add section to ToC
+}
+\author {Florian Kühne}
+\date{
+	Faculty of physics, University Duisburg-Essen, Lotharstrasse 1, D-47057 Duisburg, Deutschland\\
+		Faculty of chemistry, University Duisburg-Essen, Universitätsstr.5, D-45141 Essen, Deutschland\\
+	\today
+}
+\title { Master-thesis \\
+Local and non-local relaxation dynamics of hot electrons and holes analysed by time resolved linear photonemission}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} 
+\fancyhead[LE,RO]{\leftmark}
+\fancyhead[RE,LO]{}
+\fancyhead[CE,CO]{}
+
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[CE,CO]{}
+\fancyfoot[RE,LO]{}
+
+\begin{document}
+\newgeometry{margin=1in}
+\maketitle
+\restoregeometry
+\thispagestyle{empty}
+\newpage
+\null
+\thispagestyle{empty}
+\newpage
+\pagenumbering{Roman}
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+\renewcommand{\baselinestretch}{1.2}\normalsize%der Zeilenabstand bleibt bei 1.0, sollte aber eigentlich so ein wie im normalen text. Oder ist das gut so, den Abstract/Zusammenfassung enger zu machen?
+This thesis utilises a time resolved linear photoemission (\textit{tr}-LPE) measurement technique with a femtosecond resolution in a pump probe scheme to analyse the transport mechanisms of laser excited non equilibrium dynamics in an Fe / Au epitaxial heterostructure system. The material system Au / Fe / MgO(001) was chosen, because of the epitaxial growth and the pristine interface, as shown by Alekhin et al.\cite{Alekhin2017} and Razdolski et al.\cite{Razdolski2017}.  Here gold is being probed as the propagation layer and iron acts as an excited electron injector, because of the good absorption, in the back pump / front probe and, due to the shorter mean free path in iron than in gold, as a sink for the excited electrons in case of front pump / front probe. The described dynamics are going to be studied by variing the thickness of the gold layer. %(mentioning in a diferent style, linked to the previous text).
+To differentiate the separate transport and relaxation contributions a previously developed back side pump / front side probe was used along with the usual front side pump front / side probe. By analysis of the relaxation times a thickness dependence for the gold layer can be verified, like in Beyazit et al.\cite{beyazit2019}.The work of Beyazit et al. utilised \textit{tr}-2PPE giving good insight into the non equilibrium dynamics, but with limited access to electrons close to \gls{ef} The novelty of this work is that with \textit{tr}-LPE, the region from the Fermi-level to $1.55\,\mathrm{\mbox{eV}}$ above \gls{ef} can be probed, giving complementary data to previous experiments\cite{beyazit2019}. This is as well proof of work for the \textit{tr}-LPE setup in back pump configuration. Besides the extensively studied excited electron states, \textit{tr}-LPE allows the observation of hole states below the Fermi-level and their relaxation through recombination. This work will try to further consolidate our understanding on how electron and hole relaxation dynamics interact and compete with the transport into the heterostructure.
+\\
+%\begin{itemize}
+  %  \item "femtosecond" time resolved linear photoemission 
+ %   \item epitaxial Fe/Au/MgO(001) material system
+ %   \item laser-excited nonequilibrium electrons/holes 
+ %   \item mention explicitly tr-2PPE. With this you can link to tr-ARPES and why you want to do it
+ 
+%\end{itemize}
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\newpage
+\null
+\thispagestyle{empty}
+\newpage
+\LARGE
+Lokale und nicht lokale Relaxationsdynamiken von angeregten Elektronen und Löchern analysiert durch zeitaufgelöste lineare Photoemission
+\section*{Zusammenfassung}
+    \label{Zchap}
+\addcontentsline{toc}{section}{Zusammenfassung}
+\renewcommand{\baselinestretch}{1.2}\normalsize
+In dieser Arbeit wird die zeitaufgelöste lineare Photoemission (\textit{tr}-LPE) in einem Pump/\,Probe-Schema verwendet, um die Transportmechanismen in einem heterogenen Eisen-Gold Schichtsystem, dass als Modellsystem eingesetzt wird, zu analysieren. In den durchgeführten Experimenten wird Gold als Propagationsschicht und Eisen als Injektor oder Senke, abhängig von der Konfiguration, für die angeregten Elektronen. Um die verschiedenen Anteile der Relaxations- und Transportdynamik zu unterscheiden wurde ein bereits entwickelter rückseiten Anregung vorderseiten Sondierung Aufbau, neben dem normalen vorderseiten Anregung vorderseiten Sondierung, verwendet. Durch die Analyse der Relaxationszeiten konnte eine Abhängigkeit dieser mit der Goldschichtdicke, wie in Beyazit et al.\cite{beyazit2019}, gezeigt werden. Das Neuartige an dieser Arbeit ist, dass durch den Einsatz von \textit{tr}-LPE, die Region vom Fermi-level bis $1.55\,\mathrm{\mbox{eV}}$ darüber untersucht werden kann, wodurch komplementäre Daten zu den vorherigen Experimenten entstehen. Diese Arbeit ist ebenso ein Beleg für die Ausführbarkeit der \textit{tr}-LPE Experimente mit rückseitiger Anregung. Neben den extensiv studierten angeregten Elektronenzuständen, gibt \textit{tr}-LPE einen Einblick in die Lochdynamiken, unterhalb der Fermi-kante, und deren Relaxation durch rekombination mit Elektronen. Diese Arbeit wird versuchen das Verständnis des Zusammenspiels von Elektronen- und Lochrelaxationsdynamiken mit dem Transport in das Material zu erweitern.
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\newpage
+\section*{Acknowledgements}
+
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{List of figures}
+\listoftables
+\addcontentsline{toc}{section}{List of tables}
+\printglossary[type=\acronymtype]
+\addcontentsline{toc}{section}{Acronyms}
+\newpage
+\pagenumbering{arabic}
+\renewcommand{\baselinestretch}{1.2}\normalsize
+
+        \section{OpenQuestions}
+%changed the chapter of bandstructure of iron and gold to general properties
+Find the Perovskite publication and lead spectrum
+Die heizung im manipulator ist einfach nur eine angelegte spannung?
+Wie viele Monolayer lead haben wir aufgedampft
+Welche orientierung hatte das Silizium
+Wie hoch ist der Temperaturbereich der Infrarotkamera und die silizium annealing temp
+Rewrite introduction
+Wrapfigure hat Probleme am Seitenende und muss manuell ausgerichtet werden am ende der Arbeit
+E\textsubscript{\textit F}
+
+    \section{Introduction}
+        \label{Ichap}
+A lot of interest in the scientific community is being generated by the transport of laser-excited nonequilibrium electrons. The aim of this work is to broaden the understanding of electron and hole dynamics in heterostructure systems, by using the modelsystem \gls{fe} / \gls{au} on \gls{mgo}. The \gls{fe} / \gls{au} hetereostructure is often used in works studying spin resolved electron dynamics.\cite{Alekhin2017}\cite{Buhlmann2020}\cite{Melnikov2011} Despite the capability of analysing the transport dynamics, they were not able to analyse the interplay among relaxation and transport dynamics. Recently published works on perovskites \textbf{findquotation} have shown the importance of the energy resolved information when you want to know if the propagation dynamics are ballistic or (super)-diffusive. The novelty of this work is in using \gls{LPE}, in both the established \gls{fp} geometry to pump and probe on the \gls{au} surface, as well as the \gls{bp} geometry analysing the transport dynamics by exciting the electrons in the \gls{fe}-layer and probing them in the \gls{au}-layer. By varying the thicknesses of the \gls{au}-layer this work will attempt to disentangle the effects from the different constituents. This kind of information are highly interesting for applications like solar technology or spintronics.
+
+%\begin{itemize}
+%   \item a bit historical motivation: Brorson et al., Melnikov et al. and another groups (Eschenlohr et al. on different material systems) peformed such kind of experiments mainly optically. Despite the capability of analyzing the transport dynamics, they were not able to measure the relaxation and transport dynamics energy dependent in the time domain, and thus, not able to analyze the interplay among relaxation and transport dynamics. Recently published works on perovskites (Sung et al. 2019?) have shown how important this energy information can be if you want to know whether the propagation dynamics are pure ballistic or (super)diffusive. This kind of informations are highly interesting for applications in solar technology or batteries or spintronics.could be interesting for future application like spintronics; here you could also link to previous spin resolved optical measurements, which were not able to analyse energy resolved in time domain
+%\end{itemize}
+        \newpage
+
+
+
+    \section{Theoretical Background}
+        \label{TBchap}
+                \subsection{Elementary Scattering Processes}
+            \label{ESPchap}
+The next chapter will not cover all possible electron scattering processes, but give an overview of the important mechanism playing a role in the dynamics this work is observing. After excitation electrons start moving away from their initial position, because of a gradient in the electron state distribution and separate scattering processes on different timescales they will dissipate a part of their excess energy in the system. Here we focus on the dynamics that take place within the first picosecond.\cite{Bovensiepen2012} 
+	\begin{figure}[H]
+		\center{\includegraphics[width=0.85\textwidth]
+		{figures/Timescale.png}}
+		\caption{The typical timescales of electron dynamics.\cite{Bauer2015}}
+		    \label{timescale}
+	\end{figure}
+
+In Fig.\ref{timescale} the timescales of the excitation dynamics are shown. The processes correspond to the time scale at the bottom. %The top axis shows the energy bandwidth dictated by the transform limit of the fourier transformation. The transform limit is given for Gaussian pulses by the following formula
+%\begin{equation}
+%    \label{tbproduct}
+%\Delta\lambda * \tau_{ duration } \geq 0.44
+%\end{equation}\cite{rpphoto}
+%With \textDelta\textlambda being the energy bandwidth at \gls{fwhm} of the pulse and $\tau_{duration}$ the Pulseduration at \gls{fwhm}. 
+The top axis shows the energy bandwidth as dictated by the time energy uncertainty. The used probe beam of $200\,\mathrm{\mbox{nm}}$ has a corresponding wave period of $0.66\,\mathrm{\mbox{fs}}$.
+The first electron dynamic is that the nearby ground state electrons screen the charge of the formed hole state. This is the reason why direct radiative recombination of electron-hole pairs becomes very unlikely. Next, the photoexcited electrons lose phase coherence and start to scatter.
+These \gls{ee} events almost exclusively occur with 'cold' electrons below \gls{EF}, generating new, so called, secondary electrons. Then after a few hundred femtoseconds and longer, the electrons start scattering with the lattice phonons transferring the energy from the electronic system into the lattice. During all these processes the electrons can propagate through the metal, see \ref{ETMchap} \cite{Bauer2015}
+    
+            	\subsubsection{Electron-Electron Interactions}
+                    \label{EEIchap}
+
+The first e-e interaction is the screening of the induced charges. The electrons are exposed to Coulomb forces between each other, which can be seen as an average field that an electron experiences. If now an electron gets excited into a higher state, the leftover hole gets screened by the cloud of electrons available to spread over this emerging Coulomb source \cite{ziman2001electrons}.% Nur für die Klarheit: das ist schon alles richtig, wie Sie das beschreiben.  Es gibt aber auch eine gewisse Wahrscheinlichkeit, dass das left over hole bei EF ist, da in dem Falle direkt ein Elektron von Ef aus angeregt wird. Waere das nicht so, koennte keiner die Austrittsarbeit eines Metalles genau bestimmen. 
+This screening occurs on the order of attoseconds \cite{Bovensiepen2012}. After the screening of the holes, the excited electrons start losing coherence.% o.k. Jetzt komme ich ins Schleudern, welche Elektronen sind das jetzt ? Dann ist meine Behauptung oben eventuell falsch! Siehe Zeile 181, 7 Zeilen oberhalb von dieser. 
+This loss of phase coherence is the main reason direct recombination with the formed hole state becomes unlikely. The excited electron looses coherence due to interaction with electrons and phonons. The biggest contributing factor here is \gls{ee} with 'cold' electrons\cite{decoherence}. %Da werde ich nochmal mit Bovensiepen sprechen, aber soweit ich es verstehe, verliert das electron seine coherence aufgrund von scattering events im system, d.h. das die Electronische decoherenz und die e-e-scatterings stark miteinander verknüpft sind. aber das Elektron verliert auch seine phaseninformation bei quasi elastischer streuung mit den phononen oder anderen electronen.
+The \gls{ee} length is dependent on the available \gls{imfp}. \gls{gw} was used in \textit{ab initio} calculations to determine the \gls{imfp} of \gls{fe} and \gls{au}. \gls{gw} is an approach to calculate the self-energy in a many body system, the T-matrix adds interactions with secondary electrons and holes\cite{PhysRevB.73.125105}. The calculated \gls{imfp}s lie in the order of $4$ to $8\,\mathrm{\mbox{nm}}$ for spin majority electrons in \gls{fe}, while \gls{au} with a much larger phase space near the \gls{ef} the \gls{imfp} lies around $20$ to $70\,\mathrm{\mbox{nm}}$.\cite{PhysRevB.73.125105}\cite{ziman2001electrons}
+	            
+	            
+            \subsubsection{Electron-Phonon Interactions}
+                \label{EPIchap}
+Since at room temperature the electron-phonon scattering is \textit{quasi}-elastic, a large momentum change can occur, but only a small portion of energy gets carried into the lattice. In Copper the energy transfer by electron-phonon scattering was estimated to be about $15\,\mathrm{meV}$ per event.\cite{Bresch1986} The influence of phonons on the total scattering rate is temperature dependent. \cite{Syed2018}
+        	   
+        	   
+        	   
+        \subsection{Electron Transport Mechanisms}
+    \label{ETMchap}
+To understand the relaxation dynamics of electrons via \gls{ee} and \gls{ep} transport effects play a big role. After excitation by electromagnetic radiation the electron enters an elevated state in which it starts mov-%
+% Die Prozent Zeichen ändern Deine intendierte Position der Graphik nicht, machen den Quelltext aber übersichtlicher.
+    \begin{wrapfigure}{tR}{0.52\textwidth}
+		\centering{\includegraphics[width=0.52\textwidth]
+		{figures/DiffusionHohlfeld.png}}
+		\caption{Depiction of the DOS against the energy of the electronic system (left) and the velocity dispersion of the hot electrons away from the surface in the z direction (right). (a) describes the non equilibrium electrons at time zero during excitation, (b) is in the timescale of thermal equilibrium for the electrons and (c) describes thermal and lattice equilibrium \cite{Hohlfeld2000}.}
+		    \label{diffusion}
+	\end{wrapfigure}  %
+	ing in a random direction, where it gets reflected by barriers, like interfaces to insulators or interfaces, where the wavefunction of the excited electron and the unoccupied state do not overlap.
+	%
+Otherwise the electron travels ballistically at the Fermi velocity deeper into the sample \cite{Battiato2012}. 
+Then like in chapter \ref{EEIchap} described the electron starts to scatter, this reduces the velocity of the excited electrons. Hohlfeld et al.(2000) describes three different time scales and velocities of electron movement, see fig. \ref{diffusion}. Directly after excitation the electrons, with the distribution of the Gaussian excitation pulse, get injected into the conduction band of the metal. Here they now start moving in a ballistic motion away from the surface, contributions by in plane transport are ignored, because the size of the focal spot of the laser is much larger than the \gls{imfp} of the electrons \cite{PhysRevB.73.125105}. During this time they move with a velocity of about $10^{6}\,\mathrm{\mbox{m/s}}$ until they experience a scattering event. On the timescale of the thermal equilibrium, the electron distribution can now be characterised by the Fermi-liquid theory, Hohlfeld is now talking about hot electron diffusion, which is two orders of magnitude slower, than ballistic movement due to many scattering events. During this time the electron and phonon temperature can be modelled by two-temperature model, assuming to separate heat baths for electrons and phonons which start interacting at a certain coupling constant. Until they reach thermal equilibrium, the process is dominated by thermal lattice diffusion which decreases the velocity even further to $10^{2}\,\mathrm{\mbox{m/s}}$ \cite{Hohlfeld2000}.
+\newpage
+	\begin{wrapfigure}{R}{0.4\textwidth}
+		\center{\includegraphics[width=0.38\textwidth]
+		{figures/battiatosuperdif.png}}
+		\caption{Anomalous diffusion coefficient for a period of time of a couple of picoseconds. Here an anomalous diffusion coefficient of one expresses a ballistic motion, while two characterises a diffusive motion \cite{Battiato2012}.}
+		    \label{superdiffusion}
+	\end{wrapfigure}
+		
+Since this thesis shows experiments which studies dynamics before \gls{ep} takes place, the work of Battiatio et al.(2012) helps to discern more detailed aspects of the electron transport dynamics. Their work on calculating laser excited non-equilibrium electrons points out that there is no clear cut between ballistic and diffusive motion, but there is a so called \textit{superdiffusive} regime in which scattering is not absent like in ballistic motion, but the scattering events are too few to label it diffusive transport.  \cite{Battiato2012} Considering the carried out experiments are located in the described time frame of a few femtoseconds to a picosecond, this theoretic work will help, further the understanding of the results. Battiatio et al.(2012) is simulating a \gls{fe}/\,Al hetero structure, but a change to \gls{au} should just change the scattering rates, which move the curve, like indicated by the dashed line in fig. \ref{superdiffusion}.
+        \subsection{Linear Photoemission}
+            \label{LPchap}
+There are two different major types of Photoemission, the process of exciting an electron over the vacuum energy using photons, \gls{2PPE} and \gls{LPE} both use two photon excitation. By varying the time delay between the two pulses, both techniques gain access to the temporal evolution of the excitation process.
+% Ein unbelekter Leser versteht hier nicht warum LPE auch zwei Photonen braucht. 
+In \gls{2PPE} the energy of each photon is lower than the workfunction of the material, which needs to be exceeded to detach an electron from the material. So in 2PPE an electron only leaves the material if one photon beam raises the electron into an excited state and the second photon again excites the elevated electron to a state above the vacuum energy. See figure 1 (left). This method leads to a good \gls{stn}, but it has a limited measurable range and acts complementary to the used \gls{LPE}. By using a second photon with a lower energy than the workfunction in \gls{LPE}, we gain insight not only into the excited state, like in \gls{2PPE}, but the through excitation depleted state, called hole state from here on out as well.
+	\begin{figure}[H]
+		\center{\includegraphics[width=0.85\textwidth]
+		{figures/Energy2PPEvsARPES.pdf}}
+		\caption{Depiction of the \gls{2PPE} (left) and \gls{LPE} (right).}
+		    \label{2PPEvsARPES}
+	\end{figure}
+The figure depicts the difference, between \gls{2PPE} and \gls{LPE} on a gold surface, indicated by the workfunction \textTheta = 5.3\,eV, the hatched areas depict the probed regions of the exicted states. The clear advantage of \gls{LPE} is the ability to probe right up and even below the \gls{EF}.
+For \gls{LPE} the Probe photons, here a $6\,\mathrm{\mbox{eV}}$ beam, already has a photon energy higher than the workfunction of the probed material. This means the Probe can access all electrons above the \gls{EF} and part of the electrons below the \gls{EF}.%\\
+	\begin{equation}
+	        \label{energybelowef}
+	    E_{ below \,\, E\textsubscript{\textit F} } = E_{ Probe } -\Theta
+	\end{equation}
+With \textTheta \,\,being the workfunction of the material and \textit{E}\textsubscript{Probe} the used photonenergy of the probe beam, giving us the observable range below the \gls{EF}. By varying the probe energy one can look into lower lying ground states, or by varying the pump energy gain access to a different area of the unoccupied states. Since \gls{LPE} probes below the \gls{EF} the excitation by the pump beam even reveals hole states and they decaying dynamics. 
+        	
+        	
+
+        \subsection{Optical Penetration Depth}
+            \label{OPDchap}
+	\begin{wrapfigure}{tR}{0.5\textwidth}
+		\center{\includegraphics[width=0.48\textwidth]
+		{figures/Experimentalsetup.pdf}}
+		\caption{Illustration of optical penetration for thin film samples
+		\cite{Kovacs2007}}
+		    \label{optpen}
+	\end{wrapfigure}
+One important factor for the study of electron dynamics is the excitation mechanism. The depth of excitation is given by the optical penetration depth. The transport and proliferation of the electronic excitation is determined by the mean free path of the excited electrons and holes as well. This and the details of the scattering mechanisms give an idea about the electrons and holes spectral structure which are actually observed. The optical penetration depth is a measure of how deep an electromagnetic wave can access a material. The here used definition is, when the intensity of the light falls to $I=1/e \cdot I_{0}$, so about 36,8\,\%.\cite{depth} In this work two approaches where used to estimate the optical penetration depth:
+    \begin{itemize}
+        \item first to get a rough estimate it was calculated via the absorption coefficient, where $OPD = 1/\alpha$. To calculate the absorption coefficient and thus the penetration depth the following equation was used\cite{Powered2017}
+            \begin{equation}
+                \label{absorptionkoef}
+            \frac{ 1 }{ \alpha } = \frac{ \lambda_{ 0 } }{ 4*\pi*\kappa }
+            \end{equation}
+With $\lambda_{ 0 }$ being the vacuum wavelength of the incident light and \textkappa\, the extinction coefficient. The extinction coefficient was taken from Weaver and Krafka \cite{Weaver} and is plotted in fig. \ref{kfe} in chapter \ref{CPIchap} for \gls{fe} and fig. \ref{kau} in chapter \ref{CPGchap} for gold. This gave the following values for the different materials and wavelengths of light.
+	    \begin{table}[H]
+	    \centering
+		    \caption{Optical penetration depths}
+		    \begin{tabular}{ccc}
+			    Wavelength [nm] & \gls{fe} & \gls{au} \\
+		    	\hline
+		    	200 & 11.3 & 13.96 \\
+		    	800 & 16.89 & 12.78 \\
+		    \end{tabular}
+		        \label{opdtable}
+        \end{table}
+This approach gives a good approximation, which coincide with the results for \gls{au} for laser profile calculations, see chapter \ref{CLAPchap},  done in this work. But it ignores the scattering processes at the \gls{fe}-\gls{au} interface and assumes bulk properties. In thin film systems, that are smaller than the estimated thicknesses this leads to considerable errors, because interface contributions play a major part here in the light propagation.
+        \item The second approach calculates the field intensity directly by using the dynamical theory of diffraction and takes into account multiple scattering events. This theory was originally developed to calculate the interaction of a wave with a periodic lattice. Typical uses for this theory is the calculation of Bragg and Laue peaks for X-ray diffraction.
+
+    \end{itemize}
+    
+        \subsection{Hole Dynamics}
+            \label{HDchap}
+            
+
+            \subsection{Model System}
+                \label{MSchap}
+    \begin{wrapfigure}{R}{0.4\textwidth}
+		\center{\includegraphics[width=0.38\textwidth]
+		{figures/samplelayout.png}}
+		\caption{layout of the sample film thicknesses (left) and three-dimensional visualisation (right)}
+	    	\label{samplelayout}
+	\end{wrapfigure}  
+As a model system to study the effects of electron transport, a \gls{fe}-\gls{au} hetero structure on \gls{mgo} was chosen. The \gls{mgo} substrate provides a 001-crystal surface ideal for epitaxial growth, which is important for clean interfaces to let us neglect interface scattering. Furthermore \gls{mgo} has good transmittance of the $800\,\mathrm{\mbox{nm}}$ Pump-beam. The first layer on the \gls{mgo} is a $7\,\mathrm{\mbox{nm}}$ thick, epitaxially grown, \gls{fe} film above which there is a second layer of gold.  The \gls{fe}, due to its good absorption in the visible range, acts in back pump as an injection layer, laserabsorption profiles will later show that most of the energy of the pump beam in the back pump configuration is absorbed in the \gls{fe} layer. Then the exited electrons get injected, into the second layer, a \gls{au} film of varying thickness, in which the electrons propagate to the vacuum surface, where they get extracted by the probe beam. In case of front side excitation, we excite directly on the probed surface and can study the influence of \gls{fe} as a trap for the electrons by changing the thickness of the \gls{au} layer. The utilised sample was grown by D. Diesing and J.P. Meyburg of the physical chemistry department in the university Duisburg-Essen using molecular beam epitaxy (MBE). The sample layout is shown in fig.\,\ref{samplelayout}. The substrate is  a $9\,\mathrm{mm}$ x $9\,\mathrm{mm}$ square of a $0.5\,\mathrm{mm}$ thick \gls{mgo} on which nine different $3\,\mathrm{mm}$ x $3\,\mathrm{mm}$ areas of \gls{fe}/\,\gls{au} layers are grown in a $[001]_{\mathrm{Au}} ||\, [001]_{\mathrm{Fe}} ||\, [001]_{\mathrm{MgO}}$ orientation. The epitaxial growth of the different layers and their pristine interface are shown in \cite{Mhge1994} for \gls{mgo}/\,\gls{fe} and \cite{PhysRevLett.86.5787} for \gls{fe}/\,\gls{au}. The layers are grown in three rows of separate iron thicknesses ($7\,\mathrm{nm}$, $15\,\mathrm{nm}$ and $30\,\mathrm{nm}$) and three columns of gold thicknesses ($5\,\mathrm{nm}$, $15\,\mathrm{nm}$ and $30\,\mathrm{nm}$). Since previous experiments have shown that increasing the \gls{fe} thickness only reduces injection efficiency of the electrons, see supplement of Beyazit et al.\cite{beyazit2019}, only the $7\,\mathrm{nm}$ \gls{fe} row of the sample was used. To help understand the dynamics that are being observed, it is important to know the bandstructure of \gls{au} and \gls{fe}.
+
+            \subsubsection{Chemical Properties of Gold}
+                \label{CPGchap}
+Hammer and N\o rskov\,(1995) identified, that "the unique role that gold plays in society is to a large extent related to the fact that it is the most noble of all metals."\cite{Nature1995} Gold is a noble metal, with a full 5d-band and a half filled 6s-band, that governs the chemical behaviour of gold. 
+ %       
+ %  
+ 	\begin{figure}[H]
+ 	    \begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+        	\includegraphics[width=\linewidth]{figures/nau.pdf}
+			\caption{The refractive index $n$ of gold from $200\,\mathrm{}$to $2000\,\mathrm{nm}$. Taken out of the optical handbook from Palik.\cite{palik1991handbook}}
+			    \label{nau}
+		\end{minipage}
+			\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/kau.pdf}
+			\caption{The extinction coefficient $\kappa$ of gold from $200\,\mathrm{}$to $2000\,\mathrm{nm}$. Taken out of the optical handbook from Palik.\cite{palik1991handbook}}
+			    \label{kau}
+		\end{minipage}
+	\end{figure}
+\noindent
+%
+%
+%
+The two graphs show the real and imaginary part of the complex refractive index, as shown in eq.\,\ref{complexrefractiveindex}.
+    \begin{equation}
+        \label{complexrefractiveindex}
+        \tilde{n} = n + ik
+    \end{equation}
+The real part $n$, the refractive index, of the complex refractive index$\tilde{n}$ describes the phase velocity of the wave in the medium it is travelling in, while the complex part k, the extinction coefficient, represents the attenuation of the wave in the medium. The refractive index in fig.\ref{nau} shows, a minimum at the used wavelength of $800\,\mathrm{nm}$, when using front pump, while the attenuation is quite higher, than for the $200\,\mathrm{nm}$ probe beam.
+The bandstructure of gold and the \gls{dos} gives knowledge about what electrons participate in the excitation process and what states are being filled. These band structures show the energy dispersion of the electronic bands for different directions on the Brillouin zone. The s and p orbitals are characterised by broad band dispersion, because they are not strongly localised in the electronic structure. Whereas d orbitals are tightly bond to the core and exhibit a very small band with a high density of states.\cite{H.Ibach2008} The bandstructure of gold, see fig. \ref{bandgold}, shows that there are very few bands around the \gls{ef} , those bands have an s,p character. This is reflected by the low \gls{dos} around \gls{ef} until about $1.5\,\mathrm{eV}$ below \gls{ef}, see fig. \ref{DOSgold}. The sharp rise in the \gls{dos} is attributed to the d-bands, see fig. \ref{bandgold}, located about $2\,\mathrm{eV}$ below \gls{ef}.\cite{Beckord2018} Since gold has a full d-band, that is also lower in energy compared to the lighter counterparts of the noble metals, the d-band density of states is very narrow. \cite{Nature1995}
+	
+    \begin{figure}[H]
+		\center{\includegraphics[width=0.85\textwidth]
+		{figures/Bandgold.png}}
+		\caption{Calculated band structure of gold, the dashed line corresponds to the Fermi-level. Taken from Papaconstantopulos. \cite{Papaconstantopoulos2015}}
+		    \label{bandgold}
+	\end{figure}
+    \begin{figure}[H]
+		\center{\includegraphics[width=0.85\textwidth]
+		{figures/DOSgold.png}}
+		\caption{The density of states of gold taken from Papaconstantopulos.\cite{Papaconstantopoulos2015} The dashed line depicts the Fermi-level.}
+		    \label{DOSgold}
+	\end{figure}
+\cite{H.Ibach2008}			
+           \subsubsection{Chemical Properties of Iron}
+               \label{CPIchap}
+Iron is a ferromagnetic $3\mathrm{-d}$ transition metal. It crystallises in a \gls{bbc} unit cell and has a lattice constant of $286.6\,\mathrm{pm}$. This is important for gold to be able to grow epitaxially on the iron lattice in the  $[001]_{\mathrm{Au}} ||\, [001]_{\mathrm{Fe}} ||\, [001]_{\mathrm{MgO}}$ as shortly elaborated in chapter \ref{CPGchap}.
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+		    \includegraphics[width=\linewidth]{figures/nfe.pdf}
+			\caption{The refractive index $n$ of iron from $200\,\mathrm{}$to $2000\,\mathrm{nm}$. Taken from Johnsen and Christy. \cite{PhysRevB.6.4370}}
+			    \label{nfe}
+		\end{minipage}
+			\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/kfe.pdf}
+			\caption{The extinction coefficient $\kappa$ of iron from $200\,\mathrm{}$to $2000\,\mathrm{nm}$. Taken from Johnsen and Christy. \cite{PhysRevB.6.4370}}
+			    \label{kfe}
+		\end{minipage}
+	\end{figure}
+\noindent
+The plotted graphs show the real and imaginary part of the complex refractive index for \gls{fe}. The refractive index is quite constantly high above $500\,\mathrm{nm}$ in \gls{fe}. The plotted extinction coefficient $\kappa$ in fig. \ref{kfe} correlates, as shown in eq.\,\ref{absorptionkoef}, to the absorption of iron, which is dependent on the wavelength of the incident light. The graph shows a steady increase in the extinction coefficient with rising wavelength. The plot shows, that the $800\,\mathrm{nm}$ beam is strongly absorbed by the injection layer iron in the back pump /\, front probe experimental configuration. 
+The \gls{dos} of iron shows a lot of majority spin electrons below and around the Fermi-level, while the minority spins are shifted up by about $2\,\mathrm{eV}$.
+    \begin{figure}[H]
+		\center{\includegraphics[width=0.85\textwidth]
+		{figures/DOSiron.png}}
+		\caption{density of states of bcc-iron split into majority (spin up) and minority (spin down) electrons. Taken from Alekhin.\cite{Alekhin2015}}
+		    \label{DOSiron}
+	\end{figure}
+Momentum averaged transmittance calculations done by Alekhin \cite{Alekhin2015} show that mostly majority electrons get transmitted across the \gls{fe}-\gls{au} interface. This means that in this experiment mostly majority electrons are contribution to the signal reaching the \gls{au}-surface.
+    \newpage
+    
+    
+    
+    \section{Experimental Methods}
+        \label{EMchap}
+        \subsection{Vacuum Chamber}
+            \label{VCchap}
+            
+The Vacuum chamber can be split into three selfcontained chambers, each with an independent vacuum system. The magazine for loading and unloading, the upper, for sample preparation, and the lower chamber, for experimentation. They all run at pressures of $10\textsuperscript{-10}\,\mathrm{mbar}$.
+            \subsubsection{Magazine and Load-lock}
+                \label{MLLchap}
+	\begin{wrapfigure}{R}{0.5\textwidth}
+		\center{\includegraphics[width=0.48\textwidth]
+		{figures/Magazine.pdf}}
+		\caption{constructional drawing of the magazine and \gls{ll}
+		source: U.Bovensiepen}
+		    \label{magazin}
+	\end{wrapfigure}
+The magazine and load-lock can be used to quickly change samples and keep up to six samples in UHV-conditions.
+
+Fig.\ref{magazin} shows a sketch of the magazine and load-lock. The Magazine is connected to the load-lock and the upper chamber by gate valves(5). The Magazine can be pulled out by a rod(4) to allow the manipulator(3) to pass samples from the magazine into the upper chamber. The load-lock has a flange door(1) to allow insertion of new sample, while the gate valve(5) keeps the magazine vacuum up. To vent the load-lock, there is a small rubber valve(2) in the back. The load-lock and magazine run on their own turbo-pump with a separate membrane pre-pump, they can still be attached to pumps of the main chamber to ensure vacuum, in case of a failure, for prepared samples. There is an ion gauge installed in the magazine to monitor the pressure.
+% Ich weiss nicht, wie man pre pump schreibt. Mit - oder ohne ?
+%Kirchmann schreibt in seiner Phd-Thesis pre-pump
+            \subsubsection{Upper Chamber}
+                \label{UCchap}
+The upper chamber is used to change samples, prepare them for experiments and do some sample characterisation.
+The upper chamber is run by a turbo-pump coupled to a membrane pump.  
+	\begin{figure}[H]
+		\center{\includegraphics[width=0.8\textwidth]
+		{figures/upperchamberV2.pdf}}
+		\caption{constructional drawing of the upper chamber source: U.Bovensiepen}
+	    	\label{upper}
+	\end{figure}
+Fig.\ref{upper} omits a lot of the analytic tools available in the chamber, like LEED, and only concentrates on the parts used in this experimental series. In the z-direction the sample holder is mounted on a manipulator that can position the sample for the different tools or transfer it into the lower chamber for experiments. The manipulator contains a heater and thermocouple for temperature control. On the left the \#1, is a lead sputter gun from Varian used to evaporate very thin lead films on to silicium(001). These lead films were utilised to tune the laser system, detector and delay-line before switching to the actual samples. For the annealing of the silicon(001) samples, we use a mountable thermal imaging camera on the viewport \# 2 it can observe temperatures of up to $ = 2000\,\mathrm{\mbox{°C}}$. Number \# 3 is a hex bolt screwdriver, inside the vacuum chamber, to fasten the sample holder to the manipulator and maybe do some minor repairs. \# 4 is the connecting gate valve to the magazine, next to the \gls{qms} \# 5 used for residual gas analysis. The turbopump \# 6 is supplying both the upper, as well as the lower chamber, which is connected by a gate valve \#7. For pressure control there is a filament at \#8 capable of measuring pressures of $10^{-6}\,\mathrm{\mbox{mbar}}$ to $10^{-11}\,\mathrm{\mbox{mbar}}$.\cite{VLOFP}
+            
+            
+            \subsubsection{Lower Chamber}
+                \label{LCchap}
+	\begin{figure}[H]
+		\center{\includegraphics[width=\textwidth]
+		{figures/lowerchamberV2.pdf}}
+		\caption{constructional drawing of the lower chamber source: U.Bovensiepen}
+		    \label{lower}
+	\end{figure}
+%
+The lower chamber is used for analysis. It is connected by a gate valve to the turbo pump of the upper chamber for bake outs, but runs its own ion pump in the bottom. There are two spectrometers installed an \gls{etof} that is translating a start signal from the laser and a stop signal from \gls{mcp} at the end of it into an electron energy. The other is a \gls{ptof}, this one even has the capability to detect the position of the incoming electron on its hexagonal \gls{mcp} allowing for angle resolved measurements, even though the \gls{ptof} was used, the angular resolution was summed up to a single signal only detecting the energy resolution. Furthermore there are two viewports used to couple the beams at a $45\,\mathrm{\mbox{°}}$ angle in to the sample in either \gls{bp} or \gls{fp} geometry. A camera here helps with beam alignment.
+\newpage %% kommt weg später aber die Grafik verrutscht gerne 
+        \subsection{Laser Setup}
+            \label{LSchap}
+    \begin{wrapfigure}[33]{tR}{0.5\textwidth}
+		\center{\includegraphics[width=0.5\textwidth]
+		{figures/LasersetupV3.pdf}}
+		\caption{a schematic view of the femtosecond lasersetup}
+	    	\label{Lasersetup}
+	\end{wrapfigure}\textbf{kill newpage and fix figure position}The laser system consists of a Verdi V18 Solid-State-Laser which pumps a Ti:Sa femtosecond Laser (Coherent \textit{Micra} 900-B) and a regenerative amplifier (Coherent \textit{RegA} 9040). 13 Watts of the Verdi V18 laser are used to pump the regenerative amplifier, while the remaining 5 Watts are used to power the \textit{Micra oscillator}. A laser beam of $1.1\,\mathrm{\mbox{W}}$ with a centre wavelength of \textlambda\, $ = 806\,\mathrm{\mbox{nm}}$ and a spectral width of about \textDelta \,\textlambda \,$ = 35\,\mathrm{\mbox{nm}}$ is generated. The \textlambda\, $ =  806\,\mathrm{\mbox{nm}}$ or $\,\approx\,1.55\,\mathrm{\mbox{eV}}$ beam is split into two parts, a fraction for the pump-pulse and the rest to generate the UV probe pulse via two times \gls{SHG} in a \gls{bbo}. The $1.55\,\mathrm{\mbox{eV}}$ pump beam can be coupled into the chamber through both the front viewport for \gls{fp} geometry and viewport on the side for \gls{bp} measurements. For the temporal overlap both configurations of the $1.55\,\mathrm{\mbox{eV}}$ beam have a delay stage, that can computer controlled change the beam path length to adjust the temporal delay compared to the $6\,\mathrm{\mbox{eV}}$ probe beam. To get in right range of time delay, a fast photodiode can translate the beams to an oscillator to view the temporal shape of the laser pulse. On the oscillator the beams can be aligned temporally to under one picosecond. The fine tuning is done on the delay line. 
+            \subsubsection{Alignment}
+                \label{Achap}
+	\begin{figure}[H]
+		\center{\includegraphics[width=0.7\textwidth]
+		{figures/delayline.png}}
+        \caption{sketch of the alignment beam path taken from cite{Syed2018}}
+		    \label{align}
+	\end{figure}
+To realise a pump-probe scheme in \gls{LPE} the pump and the probe pulse need to line up both spatially and temporally. To get a rough overlap of the beams they are both redirected through a $50\,\mathrm{\mbox{\textmu m}}$ large pin hole, at the exact same distance as the sample, behind which there is a luminescent paper to view the beams. By moving the $1.55\,\mathrm{\mbox{eV}}$ only with the flip mirror and the $6\,\mathrm{\mbox{eV}}$ with the mirrors in the actual beam path a rough overlap can be achieved. To improve this overlap another flip mirror gets moved into the beam path to align both beam spots on a \gls{ccd} camera. During the bakeout, after the experimental campaign, the window was changed to a calcium fluoride window, to allow the observation of the $200\,\mathrm{nm}$ beam in future measurements. For back pump configuration the overlap is done first in front pump configuration until a signal is obtained. Then the position of the $1.55\,\mathrm{eV}$ is marked on the \gls{ccd} camera, this gives a rough position of the $6\,\mathrm{eV}$ beam, which is not picked up by the \gls{ccd} camera, because the window the \gls{ccd} is mounted on is not transmitting in the $200\,\mathrm{nm}$ range. During the bakeout, after the experimental campaign, the window was changed to a calcium fluoride window, to allow the observation of the $200\,\mathrm{nm}$ beam in future measurements.
+    
+    %% Bis hier habe ich am 8. August abends gelesen.
+    \subsection{Experimental Configuration}
+This chapter will discuss the used experimental configurations. The chamber allows for pumping and probing from the front side of the sample on the gold surface, as well as pumping the bottom layer through the transparent substrate and probing the top layer surface. See fig. \ref{expsetup}.
+	\begin{figure}[H]
+	    \center{\includegraphics[trim={0 0 0 0},clip,width=0.9\textwidth]
+		{figures/experimentalsetup.pdf}}
+		\caption{Experimental sample setup as used in this thesis}
+	    	\label{expsetup}
+	\end{figure}
+The sampleholder is fixed on a movable manipulator, that can adjust the beam position on the sample in $10\,\mathrm{\mu m}$ steps. This way all nine different sample thicknesses can be accessed. 
+
+
+	\subsection{Determination of Temporal Overlap using thin Lead Films on Si(001)}
+    To adjust the experimental setup to the new \gls{LPE} lead was measured in front pump / front probe configuration, as a known system. The lead film was freshly prepared every morning before starting the experiments. The used substrate was a silicon(001) single crystal, that was first flashed by applying a voltage of $\textbf{checkit}\,\mathrm{V}$ to heat the sample to about $\textbf{checkit}\,\mathrm{K}$. Since silicon is a semiconductor, the threshold voltage of $\textbf{checkit}$ must first be reached before a current flows, heating the sample. The temperature is measured by an infrared camera. To avoid shattering the wafer, it needs to be 
+    
+    \newpage
+
+\section{Analysis}
+    \subsection{Calculation of Laser Absorption Profile}
+        \label{CLAPchap}
+For the calculation of the laser absorption profile the programm \gls{xop} \cite{Laserprog},\cite{Dejus1996} was used. The programm was originally designed to simulate X-ray diffraction in crystals, but it can likewise be used for our laser profiles by amending the necessary datasets. To calculate the absorption depth of the $800\,\mathrm{\mbox{nm}}$ and $200\,\mathrm{\mbox{nm}}$ lasers the programm needs several optical constants, which where taken from Weaver\cite{weaver1981optical2} for \gls{au} and Palik\cite{palik1991handbook} for \gls{fe} and \gls{mgo}. The procedure from Eschenlohr\cite{Eschenlohr2014} was used, who simulated a similar heterostructural system of \gls{au}/\,Ni/\,Pt/\,Al. 
+The following systems where calculated, see table \ref{lasercalc}.
+	\begin{table}[H]
+	    \centering
+		\caption{\gls{xop} inputs}
+		\begin{tabular}{ccc}
+			\gls{au} thickness [nm] & \gls{fe} thickness [nm] & laser geometry \\
+			\hline
+			5 & 7 & \gls{fp} and \gls{bp} \\
+			15 & 7 & \gls{fp} and \gls{bp} \\
+			30 & 7 & \gls{fp} and \gls{bp} \\
+		\end{tabular}
+		    \label{lasercalc}
+	\end{table}
+All \gls{bp}-geometries, where simulated with and without the MgO-substrate by changing the environment from vacuum to MgO.
+	  
+The program then displays the absolute value of the square of the electric field intensity, which can be used to calculate the absorbed amount of laser power and the change of the aforementioned using the Beer-Lambert-Law.\cite{Eschenlohr2014}
+    \begin{equation}
+        \label{Beerlambertlaw}
+          I(z)=\left\lvert E(z) \right\rvert^{ 2 } =I_{ t } e^{ -\alpha z }
+    \end{equation}
+with absorption coefficient \textalpha, depth $z$, intensity transmitted through the surface $I_{t}$, and electric field $E$. But since the relevant quantity for the excitation of the layers is given by the variation in the real part of the Poynting vector, resulting in the transmitted power \cite{Eschenlohr2014}
+    \begin{equation}
+        \label{beerlambertintegrated}
+        P(z)=n(z)\left\lvert E(z) \right\rvert^{ 2 } =n(z)I_{ t } e^{ -\alpha z }
+    \end{equation}. %Das Lambert Beer Gesetz gilt auch fuer Ni und Pt, wie Frau Eschenlohr das gemacht hat. Fuer Fe auch, aber nie fuer Au oder Ag bei unseren Schichtdicken. Daher haben wir in der Publikation 2007 mit den Bochumern auch ein modifiziertes Lambert Gesetz eingeführt. So wie Du das hier schreibst , ist das falsch. Das faellt aber beim Boven keinem auf. Wir koennen da mal nach Abgabe der Arbeit in Ruhe drueber sprechen. Einfach so stehen lassen und weiterschreiben. Diese Bemerkung ist nur fuer die Allgemeinbildung. 
+    %Hier habe ich nochmal Diskussionsbedarf, ich habe im Paper von Frau Eschenlohr nachgelesen aus der ich die Formeln habe und von denen mir das Programm gegeben wurde, nutzt ein 30 nm Au Capping layer für die Nickelfilme zum oxidationsschutz, also sehr ähnlich zu unserer Situation.
+    %Es wird jetzt zeitlich eng, nocheinmal die Berechnungen durchzuführen. Aber ich würde dann definitiv einen absatz dazu schreiben, nachdem es geklärt ist.
+    % Klar, die Berechnungen alle so lassen. 
+    
+,with $n$ being the real part of the complex index of refraction.\cite{Eschenlohr2014}
+    \begin{equation}
+        \label{complexrefractiveindexagain}
+        \tilde{n} = n + ik
+    \end{equation}
+	\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/30nmBackpumplaser.pdf}}
+		\caption{laser absorption profile for $30\,\mathrm{\mbox{nm}}$ update the axis label and sizes}
+		    \label{30nmbplaser}
+	\end{figure}
+Fig.\ref{30nmbplaser} shows the square of the absolute value of the electric field, the absorbed laser power and the change in the absorbed laser power, depending on the thickness for $30\,\mathrm{\mbox{nm}}$ \gls{au} in \gls{bp} geometry. For the square of the absolute value of the electric field one can observe an exponential decrease in field intensity with a slight kink right at the \gls{au}/\,\gls{fe}-interface. This kink is due to the numerical solution of the \gls{xop} calculations and the convergence at the interface. The optical penetration depth of the laser beams, was estimated to the transmitted intensity dropping to 1/$e$ of the incident value 
+    \begin{equation}
+        \label{opd}
+        I_{ transmitted } = \frac{ 1 }{ e } = optical \,penetration\, depth
+    \end{equation}
+% Kleine Bemerkung nebenbei: Wenn das kappa (Imaginaerteil der optischen Konstanten relativ klein , <5, und die Schichtdicke relativ klein ist , < 50 nm, nimmt die Transmission nicht exponentiell sondern fast linear mit der Schichtdicke ab.   )
+% Habe ich 2007 auch gestaunt, ist aber so. Hier aber alles so stehen lassen, die Gedankenwelt der Laserphysiker scheint wohl exponentiell zu sein. Das ist alles keine Kritik an Dir. 
+This gave different optical penetration depths for the different systems, due to changing optical parameters of iron and gold, but similarly due to the various internal reflections in different sample thicknesses.
+For the $800\,\mathrm{\mbox{nm}}$ beam the optical penetration depth is shown in the following table \ref{OPD800}
+
+	\begin{table}[H]
+	\centering
+		\caption{estimated optical penetration depth for $1.55\,\mathrm{\mbox{eV}}$}
+		\begin{tabular}{cccc}
+			laser geometry & $5\,\mathrm{\mbox{nm}}$ \gls{au} & $15\,\mathrm{\mbox{nm}}$ \gls{au} & $30\,\mathrm{\mbox{nm}}$ \gls{au} \\
+			\hline
+			\gls{fp} & N/A & N/A & $14.8\,\mathrm{\mbox{nm}}$ \\
+			\gls{bp} & N/A & N/A & $15.3\,\mathrm{\mbox{nm}}$ \\
+		\end{tabular}
+		    \label{OPD800}
+	\end{table}
+Only on the $30\,\mathrm{\mbox{nm}}$ samples enough of the laser intensity gets absorbed and reflected so that, this work can estimate a optical penetration depth for the $800\,\mathrm{\mbox{nm}}$ pump beam. This means that we are homogeneously exiting the sample in the laser spot without creating an diffusion gradient away from the excited surface. If we look at the calculations for the $6\,\mathrm{\mbox{eV}}$ probe beam, see fig. \ref{5nmProbelaser}, we observe much more absorption in \gls{au} even for $5\,\mathrm{\mbox{nm}}$ film thickness.
+	\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/5nmProbe.pdf}}
+		\caption{laser absorption profile for $5\,\mathrm{\mbox{nm}}$ update the axis label sizes}
+		    \label{5nmProbelaser}
+	\end{figure}
+From this we know where we the electrons get excited, now we also need to consider, that the electrons need to have enough energy to be above the vacuum level $E_{vac}$ ,about $4.9 -5.1\,\mathrm{\mbox{eV}}$ depending on the surface condition, and be close to the \gls{au}/\,vacuum interface to escape the metal and make it into the detector. If we sum up all the contributions the estimated probing depth extends to about $5-7\,\mathrm{\mbox{nm}}$.
+To calculate the injection efficiency, the fluence of the $1.55\,\mathrm{\mbox{eV}}$ pump beam was measured right before entering the vacuum chamber. To accomplish that the incident power was measured with a photodiode power sensor. Eq.\,\ref{powermeter} shows the relation of the measured power to the fluence on the sample.
+\begin{equation}
+    \label{powermeter}
+    H = \frac{ P\left[ J/s \right] *\tau_{pulse}[s] }{ d_{laserspot} \left[cm^{2} \right] }*c_{loss}\left[\%\right] 
+\end{equation}
+the fluence $H$ is calculated by taking the measured power and multiplying it with the	\begin{wrapfigure}{tR}{0.6\textwidth}
+		\center{\includegraphics[width=0.4\textwidth]
+		{figures/laserremind.pdf}}
+		\caption{laser absorption profile for $5\,\mathrm{\mbox{nm}}$ \gls{au} /\, $7\,\mathrm{\mbox{nm}}$ \gls{fe} /\, \gls{mgo}}
+    		\label{laserremind}
+	\end{wrapfigure} pulse duration $\tau_{pulse}$ and dividing by the laser spot $d$, that was determined on the \gls{ccd}-camera. Because the pump beam gets reflected off one more mirror and gets transmitted through the viewport of the UHV-chamber a loss of 10\% gets added on top. Five of the six experiments were conducted using a fluence of $H = 70\,J/cm^{2}$ for the $5\,\mathrm{\mbox{nm}}$ \gls{au} \gls{fp} experiment the fluence was increased to $H = 100\,J/cm^{2}$ via reducing the optical attenuator, because $H = 70\,J/cm^{2}$ was not enough to find a signal. Combining the incident fluence with the calculated laser beam profiles gives the absorbed fluence in the different constituents of the hetero structure. Fig. \ref{laserremind} shows, that not the whole laser power is absorbed, but some of it is transmitted, as indicated by the black line. The incident fluence was multiplied by the absorbed amount, derived from calculation, and then split into the different constituents.
+
+	\begin{table}[H]
+	    \centering
+		\caption{absorbed fluence of the different constituents}
+		\begin{tabular}{ccc|cc}
+			gold layer thickness & \multicolumn{2}{c|}{front pump}&\multicolumn{2}{c}{back pump} \\
+			\hline
+			&Fe&Au&Fe&Au \\
+			$5\,\mathrm{\mbox{nm}}$ & $11.87\,\mathrm{{\mu J/cm^{2}}}$ & $0.43\,\mathrm{{\mu J/cm^{2}}}$ & $12.51\,\mathrm{{\mu J/cm^{2}}}$ & $0.175\,\mathrm{{\mu J/cm^{2}}}$ \\
+			$15\,\mathrm{\mbox{nm}}$ & $40.27\,\mathrm{{\mu J/cm^{2}}}$ & $2.57\,\mathrm{{\mu J/cm^{2}}}$ & $34.2\,\mathrm{{\mu J/cm^{2}}}$ & $1.43\,\mathrm{{\mu J/cm^{2}}}$\\
+			$30\,\mathrm{\mbox{nm}}$ & $62.97\,\mathrm{{\mu J/cm^{2}}}$ & $3.3145\,\mathrm{{\mu J/cm^{2}}}$ & $54.35\,\mathrm{{\mu J/cm^{2}}}$ & $3.47\,\mathrm{{\mu J/cm^{2}}}$\\
+		\end{tabular}
+    		\label{absorption}
+	\end{table}
+Table \ref{absorption} shows the different fluences $H$ absorbed in the separate constituents, unsurprisingly the absorption rises with increasing film thickness, even in iron, which is staying the same size. The more surprising fact is, that calculations show that even in \gls{fp} most of the laser power gets absorbed inside the iron layer. For back pump it is assumed, that we observe the fluence from the iron layer. The goal here is to compare the different experiments by normalising them among each other. 
+
+It was tried to compare the incident fluence with the leaving fluence arriving at the detector.
+\subsection{Estimation of the energy density after excitation}
+To estimate the energy in the system energy-resolved spectra, before electron excitation and for time zero, where taken and the slope of the Fermi-edge was modelled by a Fermi-function to estimate a Temperature of the system.
+    \begin{equation}
+        \label{fermidiraceq2}
+        f(E,T) = \frac{ 1 }{ e^{ E-\mu/ k_{ B  }T+1 }} \cite{Festkorper}
+    \end{equation} 
+With the chemical potential \textmu\, being varied and a constant background added to account for the normalisation, all data sets were analysed before excitation and during excitation to estimate the absorbed incident energy of the pump pulse.
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/fermifitbeforet0.pdf}
+			\caption{Time resolved spectrum at $200\,\mathrm{fs}$ before excitation for 5nm Au / 7nm Fe / MgO in back pump / front probe configuration. The blue line is the experimental data and the red line the fitted Fermi-function.}
+        		\label{fermifit}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/fermifitt0.pdf}
+			\caption{Time resolved spectrum at time zero for 5nm Au / 7nm Fe / MgO in back pump / front probe configuration. The blue line is the experimental data and the red line the fitted Fermi-function.}
+    			\label{fermifitt0}
+		\end{minipage}
+	\end{figure}
+\noindent
+The fits before excitation for 5 and $15\,\mathrm{nm}$ in both configurations give a temperature of about $400\,\mathrm{K}$, for $30\,\mathrm{nm}$ the estimated temperature was slightly higher at $460\,\mathrm{K}$. These results might at first be surprising since all measurements where carried out at room temperature, 
+    \newpage
+        \subsection{Data Pre-Processing}
+            \subsubsection{Determining the Stop Signal}
+\begin{wrapfigure}[20]{tR}{0.5\textwidth}
+		\center{\includegraphics[trim={300 135 370 80},clip,width=0.5\textwidth]
+		{figures/bias.pdf}}
+		\caption{energy diagram of the sample and detector}
+	    	\label{bias}
+	\end{wrapfigure}
+To determine the energy of the electrons an \gls{etof} spectrometer is used. The kinetic energy of an electron is linked to its velocity, see eq.\,\ref{kinenergy}.
+\begin{equation}
+    \label{kinenergy}
+    E = \frac{ 1 }{ 2 } m_{ e }*v^{ 2 }
+\end{equation}
+With $m_{e}$ being the mass of the electron.
+The velocity of the electron is calculated by taking the distance it travels from the sample to the detector and dividing it by a measured start and stop signal.
+\begin{equation}
+    \label{velocity}
+   v = \frac{ L }{ t_{stop} - t_{ start }  }
+\end{equation}
+With the distance $L$ and the stop signal $t_{stop}$, the electronic signal of the detector, when an electron hits the multi-channel-plates. The start signal $t_{start}$ is given by a photo-diode being hit by a fraction of the laser pulse. The measurement time per energy bin in the spectrometer is $249.94\,\mathrm{ps}$.  To compensate the travel time of the signal in the cables, the light travelling to the sample surface and the speed of the processor the start signal for the \gls{ptof} gets corrected by a factor \textalpha.\cite{Lisowski}
+\begin{equation}
+    \label{startsignal}
+   t_{start} = n * 249.94\,\mathrm{ps} + \alpha
+\end{equation}
+To determine this factor \textalpha\, we use the fact, that the velocity of the electron scales quadratic, while the energy scales linearly. The setup allows for a bias voltage to be applied between the spectrometer and the sample, this bias voltage can be used to accelerate and decelerate the electrons leaving the sample. By recording different spectra with different applied bias voltages, the exact offset \textalpha\, of the $t_{start}$ signal can be determined. The bias voltage $U_{b}$ gives some control over the energy levels the detector can observe as well. In fig.\ref{bias} the \gls{ef} and E\textsubscript{\textit vac}, the energy level needed for an electron to escape the material, of the spectrometer and the sample are shown. A bias voltage $U_{b}$ can now be applied to change \gls{ef} and E\textsubscript{\textit vac} with respect to the detector, but not to each other. If the E\textsubscript{\textit vac} of the sample is below E\textsubscript{\textit vac} of the detector, part of the spectrum will be cut of, because the detector wont be sensitive for it. The spectrometer is permanently grounded, so $U_{b}$ is used to equalise the two E\textsubscript{\textit vac}. In the bias series $U_{b}$ now varies and a macro calculates the time for the electronic start and stop signal delay as a free parameter. The electronic start and stop signal delay gets updated by a new bias series, when the experimental setup changes.
+
+
+
+            \subsubsection{Setting Time Zero}
+The data sets get loaded in by a previously written Igor macro, which helps with data analysis. The raw data sets look like fig. \ref{raw}. Here the previously determined $t_{start}$ comes into play to set the right energy bins for the conversion of the timing signal to the energy bins. Since the relation of time and energy is not linear, the data needs to be converted by eq. \ref{timeenergy}.\cite{Lisowski}
+\begin{equation}
+    \label{timeenergy}
+\frac{ dN }{ dE_{ kin } } = \frac{ dN }{ dt  }*\left\lvert \frac{ dt }{ dE_{ kin } }\right\rvert = \frac{ dN }{ dt  }* \frac{ \left( t - t_{0} \right)^{3} }{ m_{e} * L^{2} } = \frac{ dN }{ dt  } * \sqrt{ \frac{m_{e} * L^{2}}{ 8 }} * E_{kin}^{-\frac{ 3 }{ 2 }}
+	\end{equation}
+Because the relation between the energy and the time is non linear the relation of the size of the bins is not either. In the $250\,\mathrm{ps}$ of data accumulation the faster electrons get detected with higher accuracy, because they have smaller but more energy bins, while the slower electrons are detected in larger energy bins. 
+\textbf{more}
+
+	\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/examplespectrum.pdf}}
+		\caption{raw data of the time dependent energy distribution, after loading it with the provided Igor file}
+	    	\label{raw}
+	\end{figure}
+	
+	
+First \gls{t0} gets set to the signal of the energetically highest electrons, because they arrive in the detector first and are assumed to travel ballistic, and if they travel in a super-diffusive regime, it will be assumed that the scattering rates are constant for all samples. This is done by fitting a Gaussian over the energetically highest $0.1\,\mathrm{\mbox{eV}}$ of electrons and setting \gls{t0} to the peak. Then the \gls{ef} needs to be defined as zero to be a reference between the different measurements. Because all samples had variating count rates, a energy below \gls{ef} is chosen, that we normalise for all measurements to one.
+            \subsubsection{Determining the Broadness of the Fermi-Level}
+                \label{Fermidirac}
+The Fermi-Dirac distribution gives an approximation of the broadness of the \gls{ef} by resembling the \gls{dos} at finite temperatures.\cite{Festkorper}
+    \begin{equation}
+        \label{fermidiraceq}
+        f(E,T) = \frac{ 1 }{ e^{ E-\mu/ k_{ B  }T+1 }} \cite{Festkorper}
+    \end{equation} 
+Fig. \ref{fermi1} shows Fermi-Dirac distributions at different temperatures.
+    \begin{figure}[H]
+		\center{\includegraphics[width=\textwidth]
+		{figures/Fermi-dirac-distribution.png}}
+		\caption{several calculated Fermi-Dirac distributions for different temperatures. \cite{Festkorper}}
+	    	\label{fermi1}
+	\end{figure}
+The Fermi-Dirac distribution gives an approximation of the broadness of the \gls{ef} by the tangent of $f(E,T)$ at \gls{ef} intersecting zero at \gls{ef}$+2k_{B}T$. For our system the width of the Fermi-Dirac distribution was calculated to be $50\,\mathrm{\mbox{meV}}$.\cite{Festkorper}
+
+%	\begin{figure}[H]
+%		\center{\includegraphics[width=\textwidth]
+%   	\caption{Photoemissionspectra of Ru(001) at different temperatures (black lines), overlain with Fermi-Dirac distribution calculations for those temperatures. \cite{Festkorper}}
+%		\label{fermi2}
+%	\end{figure}
+The energy level for normalisation was chosen at $-0.1\,\mathrm{\mbox{eV}}$ to have no temperature dependent effects. Now the results of the particular measurements can be compared amongst each other.
+            \subsubsection{Normalisation and Fermi-Level Fit}
+For normalisation an average intensity value was calculated from spectra before excitation for each data set.
+	\begin{figure}[ht]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/norm.pdf}}
+		\caption{linear representation of the normalised correlated signal of 5nm Au /\, 7nm Fe /\, MgO in the BP configuration.}
+	    	\label{norm}
+	\end{figure}
+
+Fig.\ref{norm} shows a correlated spectrum of a already normalised data set. There are several features visible in this linear representation. Starting from the left, there is the cutoff of the detector at $-2.2\,\mathrm{\mbox{eV}}$, which can be manipulated by changing the bias-voltage between the sample and the detector. Then the strong increase in signal intensity around $-1.1\,\mathrm{\mbox{eV}}$ is called the secondary edge. \textbf{das müsste die niedrigsten anregbaren electronen sein, aber da sind ja noch welche drunter.} Then we obeserve the electrons in the states of gold, that the probe beam can exite by itself. The declining flank around $0\,\mathrm{\mbox{eV}}$ is called the Fermi edge, the highest occupied ground states. Not visible in the linear representation, because the changes are so small, are the excited states from the correlated signal.
+The process of fitting the \gls{ef} and the normalisation might have to be repeated in sequence until all samples have the same Fermi level.
+
+	\begin{wrapfigure}{R}{0.5\textwidth}
+	    \center{\includegraphics[width=0.48\textwidth]
+		{figures/shiftedontop.pdf}}
+		\caption{linear representation of the normalised correlated signal of all samples}
+    		\label{shifted}
+	\end{wrapfigure}
+Here one difficulty in fitting the \gls{ef} can already be seen in figure \ref{shifted}. The changing peak height of the spectral feature next to the secondary edge, which is probably differing due to surface conditions, interferes with the fit procedure ,because it then undervalues the slope of the Fermi-edge. Because of different bias-voltages $U_{b}$ the spectra are sometimes variate in the position of the secondary edge.
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/insetfitbad.pdf}
+			\caption{linear plot between $-0.6\,\mathrm{\mbox{eV}}$ and $0.6\,\mathrm{\mbox{eV}}$ around the Fermi edge for $15\,\mathrm{\mbox{nm}}$ Au in BP geometry. Data points (blue) and fit (red).}
+        		\label{fitbad}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/insetfitbad2}
+			\caption{linear plot of the Fermi-edge fit for $15\,\mathrm{\mbox{nm}}$ Au in BP geometry. Data points (blue) and fit (red).}
+    			\label{fitbad2}
+		\end{minipage}
+	\end{figure}
+\noindent
+
+Fig.\ref{fitbad} and fig.\ref{fitbad2} show the fit for \gls{ef} of the $15\,\mathrm{\mbox{nm}}$ Au measurement in BP geometry. The spectral feature around $-1\,\mathrm{\mbox{eV}}$ is so pronounced that it starts to merge with the Fermi-edge and this makes it difficult to find a energetic lower boundary for the fit. 
+		\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/insetfitgood.pdf}}
+		\caption{linear plot of the Fermi-edge fit for $30\,\mathrm{\mbox{nm}}$ Au in FP geometry. Data points (blue) and fit (red).}
+    		\label{fitgood}
+	\end{figure}
+The fit is a convolution of three functions, a Lorentzian, a Gaussian and the Fermi-function at a temperature $300\,\mathrm{\mbox{K}}$, whose Parameters get optimised and the Fermi-edge gets set where it converges to the lowest error $\chi^{ 2 }$. 
+        \subsection{Signal to Noise Ratio}
+            \label{stnchap}
+The count rates of the measurements vary, but to visualise the difference the \gls{stn} was calculated.
+	\begin{table}[H]
+	    \centering
+		\caption{Signal to Noise ratio}
+		\begin{tabular}{cccc}
+			laser geometry & $5\,\mathrm{\mbox{nm}}$ \gls{au} & $15\,\mathrm{\mbox{nm}}$ \gls{au} & $30\,\mathrm{\mbox{nm}}$ \gls{au} \\
+			\hline
+			\gls{fp} & 39.8 & 9.8 & 7.7 \\
+			\gls{bp} & 15.4 & 8.0 & 7.9 \\
+		\end{tabular}
+    		\label{stn}
+	\end{table}
+Table \ref{stn} shows, that the \gls{stn} ratio has an inverse trend of increasing, when the sample thickness decreases. Along with an increase of the \gls{stn}, when the \gls{fp} geometry is used. This is suprising, since \gls{fp} has the problem of the high reflectance of $R_{ P }(\phi = 0) = 0.988 \,@ \,1.5\,\mathrm{\mbox{eV}}$ for \gls{au}, while \gls{fe} reflects much less, with $R_{ P }(\phi = 0) = 0.601 \,@ \,1.5\,\mathrm{\mbox{eV}}$. Not only does this reduce the absorbed energy density for \gls{fp}, but also leads to multi photon effects, which make finding a suitable spot for a measurement on the surface a real challenge.
+
+The actual measured spectra are shown below in fig.\ref{FP5nonorm} and fig.\ref{BP30nonorm}. For comparison $5\,\mathrm{\mbox{nm}}$ Au with \gls{fp} and $30\,\mathrm{\mbox{nm}}$ with \gls{bp} were chosen. Both graphs use the same colorcode and axes.
+
+	\begin{figure}[H]
+		\begin{minipage}[b]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/FP5noNorm.pdf}
+			\caption{$5\,\mathrm{\mbox{nm}}$ Au in FP geometry.}
+	    		\label{FP5nonorm}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[b]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/BP30noNorm.pdf}
+			\caption{$30\,\mathrm{\mbox{nm}}$ Au in BP geometry.}
+	    		\label{BP30nonorm}
+		\end{minipage}
+	\end{figure}
+
+The graphs show the time dependent energy resolved spectra with the colour code displaying the intensity count of the detector. With dark blue being the lowest counts and going over green,yellow to the threshold value at brown. Values above the threshold are displayed white.
+The difference in the \gls{stn} ratio is immediately apparent when looking at the colour of the peak and the time independent background at higher energies.
+For the $5\,\mathrm{\mbox{nm}}$ measurements the excited electron signal from the $1.55\,\mathrm{\mbox{eV}}$ plus $6\,\mathrm{\mbox{eV}}$ is one order of magnitude bigger than the background above \gls{ef}, while the linear photo-electron emission of the ground states electrons are between 4 \& 6 orders of magnitudes bigger than the excited signal.
+        \subsection{Analysis of the Time Independent Energy Transients}
+            \label{transchap}
+After pre-processing the Data, the time dependent energy resolved spectra can be divided into energy resolved spectra at certain time intervals. The time intervals need to be precisely tuned so that, both the time resolution stays high enough to observe the decay and enough energy resolution to detect any spectral feature. In fig. \ref{transients1} a time integration of $60\,\mathrm{\mbox{fs}}$ and a energy resolution of $5\,\mathrm{\mbox{meV}}$ the maximal resolution of the \gls{ptof} is shown.
+	\begin{figure}[H]
+		\center{\includegraphics[width=\textwidth]
+		{figures/energytransient.pdf}}
+		\caption{energy transients for two different times (time zero and $58\,\mathrm{\mbox{fs}}$ later) for $5\,\mathrm{\mbox{nm}}$ Au in BP geometry}
+    		\label{transients1}
+	\end{figure}
+%		\begin{wrapfigure}{R}{0.5\textwidth}
+%		\center{\includegraphics[width=0.5\textwidth]
+%		{figures/holetrans.pdf}}
+%		\caption{Electrons and holes for 5nm Au in BP geometry. Black and blue: Electrons, Green and red: Hole states.}
+%		\label{transients2}
+%	\end{wrapfigure}
+These transients where pulled for different times and intervals up to complete relaxation of the system. First the general behaviour will be discussed and then measurement specific properties. The fig. \ref{transients1} shows the \gls{pes} intensity in arbitrary units versus the energy with the \gls{ef} referenced to zero. This data set is $5\,\mathrm{\mbox{nm}}$ \gls{au} in \gls{bp} configuration and the coloured curves represent different times after excitation. Below the Fermi-level all measurements show a lot of noise, because of the signal difference, see \ref{stnchap}. Then above $0\,\mathrm{\mbox{eV}}$ the intensity builds up at time zero (green line) with a peak around $0.1\,\mathrm{\mbox{eV}}$ and then falling off until $1.55\,\mathrm{\mbox{eV}}$ the energy of the pump pulse. After $58\,\mathrm{\mbox{fs}}$ intensity is still building up until $0.33\,\mathrm{\mbox{eV}}$, while the higher energetic electrons are already decaying. For the next time step of $253\,\mathrm{\mbox{fs}}$ the population is decaying on all energies stronger than they get repopulated, while it is still higher than time zero for energies below $0.125\,\mathrm{\mbox{eV}}$. Afterwards the population decays further with the lower states having the longest lifetime. Specifically different for the $5\,\mathrm{\mbox{nm}}$ \gls{au} \gls{bp} measurement is the fact, that the electrons up to $0.2\,\mathrm{\mbox{eV}}$ above the \gls{ef} do not decay within the measurement    \begin{wrapfigure}{tR}{0.5\textwidth}
+		\center{\includegraphics[width=0.5\textwidth]
+		{figures/holetrans.pdf}}
+		\caption{energy transients for different times with emphasis on below the Fermi level}
+    		\label{transients2}
+	\end{wrapfigure} time of $1.5\,\mathrm{\mbox{ps}}$. Another feature, that is observed in both geometries of the $5\,\mathrm{\mbox{nm}}$ measurements, if the noise is carefully watched, is a decrease of intensity below \gls{ef}. This loss of intensity builds up first, just like the low energy electrons and then decays back into the noise level. These dynamics can be observed for $1\,\mathrm{\mbox{ps}}$ until they decay back into the noise level for $5\,\mathrm{\mbox{nm}}$ \gls{bp}. $5\,\mathrm{\mbox{nm}}$ \gls{fp} shows the same behaviour, but it is already decayed after $550\,\mathrm{\mbox{fs}}$. One spectral feature can be identified very close to the \gls{ef}. This spectral feature, see fig.\ref{specfeature}, here shown in the 5nm Au /\, 7nm Fe \gls{bp} configuration, is only observable for \gls{bp} regardless of film thickness size.
+	\begin{figure}[H]
+		\center{\includegraphics[width=0.8\textwidth]
+		{figures/Spectralfeature.pdf}}
+		\caption{energy transients for different times with emphasis on a spectral feature slightly above the Fermi-level.}
+    		\label{specfeature}
+	\end{figure} 
+The feature emerges slightly above the Fermi-level directly after excitation and disappears after a few hundred femtoseconds due to the broadening of the main peak of excited electrons.
+        \subsection{Background Subtraction}
+            \label{BGSchap}
+As in chapter \ref{transchap} already shown, the method of measurement \gls{LPE} is sensitive to hole dynamics. For sufficiently thin films the probe beam can detect the depopulation of states below the \gls{ef}. This gives the opportunity to study the transportation and relaxation mechanism of holes in a time resolved manner. To depict these, from here on called, hole states visually and to make analysis of them more strait forward the time independ background was subtracted from all data sets. This was done by taking an average value, before excitation, at each energy bin and subtract that at every time delay.
+
+%	\begin{figure}[H]
+%		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+%			\includegraphics[width=\linewidth]{figures/NoBGS.pdf}
+%			\caption{normalised time dependent energy resolved spectrum for $5\,\mathrm{\mbox{nm}}$ Au in BP configuration.}
+%			\label{NoBGS5BP}
+%		\end{minipage}
+%	\hspace{.075\linewidth}% Abstand zwischen Bilder
+%		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+%			\includegraphics[width=\linewidth]{figures/BGS5BP.pdf}
+%			\caption{Background subtracted time dependent energy resolved spectrum for $5\,\mathrm{\mbox{nm}}$ Au in BP configuration. In the colour scale blue means negative change, white equals zero and red are positive changes}
+%			\label{BGS5BP}
+%		\end{minipage}
+%	\end{figure}
+
+	\begin{figure}[H]
+	    \center{\includegraphics[width=\textwidth]
+		{figures/BGS5BP.pdf}}
+		\caption{Background subtracted time dependent energy resolved spectrum for $5\,\mathrm{\mbox{nm}}$ Au in BP configuration. In the colour scale blue means negative change, white equals zero and red are positive changes.}
+	    	\label{BGS5BP}
+	\end{figure}
+The colour plot of the background subtraction must be correctly understood. The mixed red and blue intensity at negative values is the noise of the measurement, then the transition into the white above is due to the reduction of signal intensity not necessary the Fermi-level, which often lies a bit lower. At zero time delay the energy of the $1.55\,\mathrm{\mbox{eV}}$ pump pulse is spread evenly over all available excited states, with increasing time alot of the energy relaxes into lower energy states by scattering processes with ground state electrons, creating two secondary electrons of lower energy, about half the initial energy. The small line at $-400\,\mathrm{\mbox{fs}}$ is a measurement error. Below the Fermi-edge a bit after excitation, a reduction in intensity is visible. The hole states decay over about $500\,\mathrm{\mbox{fs}}$.
+
+To better describe the dynamics of the electrons and holes, the same analytic method as Lisowski et al.(2004) used on \gls{2PPE} measurements on Ru(001). First the relative number of electrons and holes around \gls{ef} was calculated.\cite{Lisowski2004}
+    \begin{equation}
+        \label{releeq}
+        n_{ \pm } = \int\limits_{0}^{\pm0.3\,\mathrm{eV}} N(E,t) dE
+    \end{equation}
+    \newline
+	\begin{wrapfigure}{tR}{0.65\textwidth}
+		\center{\includegraphics[width=0.65\textwidth]
+		{figures/EandH5BP.pdf}}
+		\caption{Electrons and holes for 5nm Au in BP geometry. Black and blue: Electrons, Green and red: Hole states.}
+    		\label{EandH5BP}
+	\end{wrapfigure}
+In order to analyse the various energy states and further find the limits of the data set the upper bound of the integral was varied from $E - E_{\rm{F}}=0$ to $\pm\, 0.6\,\mathrm{\mbox{eV}}$. Fig.\ref{EandH5BP} shows that most of the electron and hole dynamics do not appear at time zero, it takes a few tenth of femtoseconds to build the intensity up. Here all different integral bounds are shown to stress the point, that in the relative distribution most of the electrons and holes reside $\pm\,200\,\mathrm{\mbox{meV}}$ around the Fermi-level. When multiplying the relative number of holes with $-1$ and omitting the higher energies, the symmetry of the electrons and holes becomes very apparent. The fig.\,\ref{EandH5BPsym} features the relative number of electrons and holes integrated over the indicated upper bound.
+\\
+    	\begin{figure}[H]
+		\begin{minipage}[t]{.55\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/EandH5BPsymImproved.pdf}
+			\caption{relative number of electrons and holes for 5nm Au in BP geometry. Black: Electrons, Red: Hole states}
+			\label{EandH5BPsym}
+		\end{minipage}
+		\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}{.375\linewidth} % [b] => Ausrichtung an \caption
+ The integration is done in $100\,\mathrm{meV}$ chunks and the Fermi-edge here is defined as the chunk, where the electron signal and the reduction of signal by hole states cancel each other out to a zero baseline. If one sets the increased noise level of hole dynamics aside,the comparison reveals that the relative number of electrons and holes, displayed in fig.\,\ref{EandH5BPsym}, are almost identical.
+		\end{minipage}
+		\end{figure}
+They decay on the same timescale. It is interesting to see, that despite integrating over a energy window twice the size, most electrons and holes are localised within the first $100\,\mathrm{meV}$. This analysis was performed on the $5\,\mathrm{nm}$ \gls{au} /\, $7\,\mathrm{nm}$ \gls{fe} /\, \gls{mgo} front pump /\, front probe measurement as well.
+And by combination of the electrons close to the Fermi-edge with lower lying holes. Even if our approach is not sensitive enough, the excitation process has to create the same number of holes like the observed excited electrons. Only $5\,\mathrm{\mbox{nm}}$ \gls{au} in both back and front pump geometry showed observable hole states. Thicker gold films do not show these hole states, because they are to far away from the gold/\,vacuum surface to be detected. The relaxation of the electrons and hole states around \gls{ef} take about $0.5\,\mathrm{\mbox{ps}}$ to decay, while in \gls{fp} the dynamics could be detected above the noise level up to the measurement duration of $2\,\mathrm{\mbox{ps}}$.
+To now further analyse the electron dynamics, they get weighted by energy, as Lisowski et al.(2004) did. This increases the information from a relative amount of electrons to an amount of energy in the probed area during a certain time step \cite{Lisowski2004}.
+    \begin{equation}
+        \label{energydensity}
+        U(t) = 2\int\limits_{E\textsubscript{\textit F} = 0}^{ 1.6\,\mathrm{eV} }{ N(E,t)\, \left\lvert E \right\rvert \,dE}
+    \end{equation}
+Since the spot size and overlap changes between measurements, the probed area is taken into account as well. By dividing the amount of energy through the probed area a comparable energy density is calculated. Since the detector measures the electron energy in eV the data gets multiplied by the electric charge $C$ to be comparable to the laser irradiation.
+	\begin{figure}[H]
+	    \center{\includegraphics[trim={0 0 200 0},clip,width=0.9\textwidth]
+		{figures/15nmBPcorrected.pdf}}
+		\caption{energy density plot over the entire measurement time of 15nm Au in BP configuration, different colours describe different integral bounds}
+	    	\label{15BP}
+	\end{figure}
+Fig. \ref{15BP} depicts the energy density before and after excitation by the pump pulse, first there is a sharp rise of energy density at \gls{t0}, when the pump pulse deposits the energy into the iron layer and then it slowly falls of while the electrons relax and transport away from the probed area. After about $250\,\mathrm{\mbox{fs}}$ all energy is relocated into $0.2\,\mathrm{\mbox{eV}}$ above \gls{ef} and then it takes another $388\,\mathrm{\mbox{fs}}$ for the system to reach thermal equilibrium, dissipating the energy into the sample. Here the relaxation time \texttau\, is defined as the elapsed time before the signal vanishes into the noise again. These relaxation times \texttau\, differ for all measurements, as they show a dependence on the experimental geometry and the sample thickness.
+	\begin{table}[H]
+	    \centering
+		\caption{relaxation times}
+		\begin{tabular}{cccc}
+			laser geometry & $5\,\mathrm{\mbox{nm}}$ \gls{au} & $15\,\mathrm{\mbox{nm}}$ \gls{au} & $30\,\mathrm{\mbox{nm}}$ \gls{au} \\
+			\hline
+			\gls{bp} & N/A($>$2ps) & 638 fs & 383 fs \\
+			\gls{fp} & 210 fs & 337 fs & 198 fs \\
+		\end{tabular}
+	    	\label{relax}
+	\end{table}
+	
+It is here mentioned, that when looking at the data sets, the $30\,\mathrm{\mbox{nm}}$ \gls{au} \gls{fp} measurement looks odd, because it is a lot more symmetric, all other measurements have a much longer time the energy needs to dissipate, than it needs to build up. This might be correct, but the 3D plot indicates, that the measurement did not run correctly. It looks like a energy chunk of the lower energetic electrons are missing. Analysis of this issue is still ongoing. In general there are two trends in table \ref{relax} visible, (i) the relaxation time in \gls{bp} decreases with rising \gls{au} film thickness and (ii) the relaxation times are always shorter in \gls{fp}. A third trend (iii), if a remeasurement of $30\,\mathrm{\mbox{nm}}$ \gls{au} \gls{fp} confirms it, is an increase in lifetime of excited states by increasing the \gls{au} film thickness for \gls{fp}.
+
+        \subsection{Energy Density}
+            \label{energydensitychap}
+This chapter is devoted to the analysis of the already presented data under the aspect of the amount of energy that is shone onto the system by the pump beam, then travels across the heterostructure, and the amount of energy then detected through the probe beam. To compare the different measurements the area of the beams is considered, so the comparisons will be made between the energy densities of the experiments. At appropriate points the energy densities were normalised at $0.1\,\mathrm{\mbox{eV}}$ below \gls{ef}.
+
+The in eq.\,\ref{energydensity} calculated energy density has the unit $\mathrm{{eV}}$, while the incident fluence was calculated in $\mathrm{{\mu J/cm^{2}}}$. Therefore all plots where multiplied by the coulomb constant and divided by the area of the probe beam.
+The following graphs show the energy density for the three \gls{au} thicknesses, $5\,\mathrm{{nm}}$,$15\,\mathrm{{nm}}$ and $30\,\mathrm{{nm}}$, in front pump /\, front probe and back pump /\, front probe geometry.
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/5nmFPNoNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $5\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the front pump /\, front probe configuration.}
+	    		\label{5nmFPnoNorm}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/5nmBPNoNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $5\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the back pump /\, front probe configuration.}
+	    		\label{5nmBPnoNorm}
+		\end{minipage}
+	\end{figure}
+\noindent
+The direct comparison between front pump /\, front probe and back pump /\, back probe, is best done with the $5\,\mathrm{nm}$ \gls{au} /\, $7\,\mathrm{nm}$ \gls{fe} /\, \gls{mgo} experiments, since effects are most pronounced here. The total measured energy density measured at its peak is comparable, the back pump measurement bigger by a order of three, but still in the same order of magnitude. While the front pump measurement decays really fast, the back pump measurement is much more long lived, as discussed in chapter \ref{BGSchap}.
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/15nmFPNoNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $15\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the front pump /\, front probe configuration.}
+	    		\label{15nmFPnoNorm}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/15nmBPNoNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $15\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the back pump / front probe configuration.}
+    			\label{15nmBPnoNorm}
+		\end{minipage}
+	\end{figure}
+\noindent
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/30nmFPNoNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $30\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the front pump /\, front probe configuration.}
+	    		\label{30nmFPnoNorm}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/30nmBPNoNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $30\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the back pump /\, front probe configuration.}
+	    		\label{30nmBPnoNorm}
+		\end{minipage}
+	\end{figure}
+\noindent
+ One can compare the incident laser power, that is absorbed by the constituent, see chapter \ref{CLAPchap}, with the energy that the probe beam observes. This ratio will be called the injection efficiency
+ 	    \begin{table}[H]
+	    \centering
+		    \caption{Injection efficiency}
+		    \begin{tabular}{ccc}
+			    \gls{au} thickness [nm] & front pump & back pump \\
+		    	\hline
+		    	5 & 1.2e-6 & 3.7e-6 \\
+		    	15 & 0.5e-6 & 480e-6 \\
+		    	30 & 4.6e-6 & 1e-6 \\
+		    \end{tabular}
+		        \label{injectable}
+        \end{table}
+\subsubsection{Normalised Energy Density}
+    \label{NEDchap}
+Because the \gls{stn}-ratio differs widely for the different experiments, the data sets where normalised at a point independent of the temperature dependence of the Fermi-level. This was calculated in chapter \ref{Fermidirac} and $-0.1\,\mathrm{eV}$ was chosen.
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/5nmFPNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $5\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the front pump /\, front probe configuration normalised to $-0.1\,\mathrm{{eV}}$.}
+	    		\label{5nmFPNorm}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/5nmBPNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $5\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the back pump /\, front probe configuration normalised to $-0.1\,\mathrm{{eV}}$.}
+	    		\label{5nmBPNorm}
+		\end{minipage}
+	\end{figure}
+\noindent
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/15nmFPNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $15\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the front pump /\, front probe configuration normalised to $-0.1\,\mathrm{{eV}}$.}
+	    		\label{15nmFPNorm}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/15nmBPNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $15\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the back pump /\, front probe configuration normalised to $-0.1\,\mathrm{{eV}}$.}
+	    		\label{15nmBPNorm}
+		\end{minipage}
+	\end{figure}
+\noindent
+\newpage
+	\begin{figure}[H]
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/30nmFPNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $30\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the front pump /\, front probe configuration normalised to $-0.1\,\mathrm{{eV}}$.}
+	    		\label{30nmFPNorm}
+		\end{minipage}
+	\hspace{.075\linewidth}% Abstand zwischen Bilder
+		\begin{minipage}[t]{.45\linewidth} % [b] => Ausrichtung an \caption
+			\includegraphics[width=\linewidth]{figures/30nmBPNorm.pdf}
+			\caption{Energy integrated, time dependent transients from $E_{\rm{F}}$ to $1.7\,\mathrm{{eV}}$ for $30\,\mathrm{{nm}}$ Gold, $7\,\mathrm{{nm}}$ Iron using the back pump /\, front probe configuration normalised to $-0.1\,\mathrm{{eV}}$.}
+	    		\label{30nmBPNorm}
+		\end{minipage}
+	\end{figure}
+\noindent
+	    \begin{table}[H]
+	    \centering
+		    \caption{norm. injection efficiency}
+		    \begin{tabular}{ccc}
+			    \gls{au} thickness [nm] & front pump & back pump \\
+		    	\hline
+		    	5 & 40e-3 & 150e-3 \\
+		    	15 & 20e-3 & 25e-3 \\
+		    	30 & 20e-3 & 20e-3 \\
+		    \end{tabular}
+		        \label{norminjectable}
+        \end{table}
+    \newpage
+    \section{Discussion}
+        \label{Dchap}
+The reason for observing the hole states:
+The hole states are only observed on the thinnest film thickness of $5\,\mathrm{\mbox{nm}}$ \gls{au}, because here the probe beam penetrates both the \gls{au} and the $7\,\mathrm{\mbox{nm}}$ \gls{fe}-layer, if the film thickness increases the hole states are no longer observable, because they cannot transport from the \gls{fe} into the \gls{au}. If these holes would be excited in the \gls{au}-layer during \gls{fp} measurements, then they would appear in the thicker \gls{fp} measurements. 
+    \newpage
+    \section{Summary}
+        \label{Schap}
+    
+    \newpage
+    \section{Calculation of the Energy Density}
+First a new Igor file, with the 2PPE-Igor macros, gets opened. Then the length of the drift tube gets adjusted from 300mm to 200mm, for pTOF. Next the time zero for the electronic start-stop signal gets put to the value determined by the Bias-series. The measurement described here, 5nm Au / 7nm Fe / MgO in back pump / front probe configuration was performed on the 7th of January and the timezero was optimised on 11th of December to -14.1 ns. The data set, an accumulation of 100 scans, gets then loaded in.
+	\begin{figure}[H]   
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/justloadedin.pdf}}
+		\caption{unedited 2D plot of the raw data}
+	    	\label{justloaded}
+	\end{figure}
+Next the Fermi level gets fitted by the 2PPE macro by using a constant background multiplied with a Fermi-function and convoluted with a Gaussian function. Keeping the temperature of the Fermi-function at $300\,\mathrm{K}$, there Fermi-level is determined by the smallest error in the standard deviation. Here the normalisation is skipped, but usually $10$ values $100\,\mathrm{meV}$ before excitation are picked and the mean is created and divided by the entire dataset.
+\\
+After that the background gets subtracted, for that a random chunk before excitation is chosen, see fig. \ref{setfermi}. For good statistics the time window was set to 100 fs, starting 200 fs before excitation, the outlier was avoided. As long as the time window avoids outliers, the size of \textDelta\, t does not seem to play a role.
+	\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/setfermiedge.pdf}}
+		\caption{now Fermi-level and colorscale are set, the red square indicates the energy dependent transient used for background subtraction}
+	    	\label{setfermi}
+	\end{figure}
+Every time delay gets subtracted by the pulled chunk before excitation using the following command:
+\begin{equation}
+    TOF2D\_en\_001\left[ \,\right]\left[\,  \right]-=BGS040\_060\left[ q \right]
+\end{equation}
+The hole dynamics become visible and the Fermi-level can be fine tuned to the point, where holes and electrons cancel each other out, within a 0.1 eV window. In case of the normalised spectra, the background substraction and normalisation gets reversed at this point and again normalised to the value of the new -100 meV.
+	\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/BGS.pdf}}
+		\caption{2D plot of the background subtracted spectrum}
+	    	\label{BGS}
+	\end{figure}
+The 2PPE macro is then used to extract the time independent energy resolved transients. Fig.\,\ref{timedep2} shows an example for the first transient, via a script these are saved as a wave for every 5 fs, so every datapoint.
+		\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/timedep.pdf}}
+		\caption{Energy dependent spectrum of -500 to -495 fs}
+	    	\label{timedep2}
+	\end{figure}
+The next steps are checked by hand calculation as well. After storing all transients a script is then run for analysis, first it sums the 5meV steps up into 100meV bins to make the data easier to be handled.
+		\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/bins.pdf}}
+		\caption{Energy dependent spectrum of time zero}
+	    	\label{bins}
+	\end{figure}
+The energy weighted analysis, like in Lisowski(2007) will be discussed. In case of the energy weighted analysis the bins get multiplied by the corrosponding energy and two to account for holes.
+    \begin{equation}
+        U(t) = 2\int\limits_{E\textsubscript{\textit F} = 0}^{ 1.6\,\mathrm{eV} }{ N(E,t)\, \left\lvert E \right\rvert \,dE}
+    \end{equation}
+For every 100meV a wave is created. The bins are then summed up to the integration limit. The script then takes the next transient, does the same analysis and stores the result in the previously created waves by redimensioning it.
+The created data is the information of energy contained in the observed counts.
+		\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/analysis.pdf}}
+		\caption{Energy integrated spectrum}
+	    	\label{analysis}
+	\end{figure}
+This now gets referenced to the illuminated area by dividing with the spot size of $0.000404 cm^{2}$.
+		\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/perarea.pdf}}
+		\caption{Energy integrated spectrum}
+	    	\label{perarea}
+	\end{figure}
+To compare the values with the incident beam which is in $\mu J/cm^{2}$, the data gets divided $6.241509*10^{18}$ to convert into J.
+		\begin{figure}[H]
+	    \center{\includegraphics[width=0.9\textwidth]
+		{figures/finished.pdf}}
+		\caption{Energy integrated spectrum}
+	    	\label{finished}
+	\end{figure}
+Meanwhile the relative number of electron analysis is done, here the same analysis is done without multiplying with the energy, but including energy windows below \gls{ef}.
+    \begin{equation}
+        n_{ \pm } = \int\limits_{0}^{\pm0.3\,\mathrm{eV}} N(E,t) dE
+    \end{equation}
+
+\newpage
+\renewcommand{\baselinestretch}{1.0}\normalsize
+% Hier kann der Zeilenabstand wieder kleiner werden.
+    \fakesection{References}
+%\nocite{*}
+\bibliographystyle{IEEEannot}
+\bibliography{annot}
+\newpage
+    \section*{Appendix}
+    \newpage
+
+\null
+\thispagestyle{empty}
+    \newpage
+
+\section*{Eigenstänidigkeitserklärung}
+
+Hiermit erkläre ich, dass ich diese Arbeit selbstständig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt, sowie Zitate kenntlich gemacht habe.
+\\
+\\
+Duisburg, \date{\today}
+\\
+\\
+\\
+\\
+\\
+Florian Kühne
+\end{document}

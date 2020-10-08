@@ -1,0 +1,182 @@
+// Meins
+// ToDo:
+// write different steps into the Summe
+Function EnergyAverage(w,druckenSumme,druckenTimeevolution,Energyweighted,above0,below0)
+// EnergyAverage(wavename,0,0)
+Wave w
+variable druckenSumme
+variable druckenTimeevolution
+variable above0, below0
+variable Energyweighted
+
+String foldername = "Datafolder"
+if(waveexists(check))
+Print "check"
+else
+NewDataFolder /O $foldername
+endif
+make /N=1 /O check
+SetDataFolder Datafolder 
+make /N=(numpnts(w)-26) /O reduced_w
+reduced_w = w[p+16]
+Variable i, n=(999-16)
+make /N=(n/20) /O Summe
+make /N=(n/20) /O Summe
+make /N=(n/20) /O MedianEnergy
+//Cut,extract and sum up Data	
+MedianEnergy= (0.005*x)*20-2.10
+	
+for(i=0;i<n;i+=20)
+	Summe[i/20] = reduced_w[i]+reduced_w[i+1]+reduced_w[i+2]+reduced_w[i+3]+reduced_w[i+4]+reduced_w[i+5]+reduced_w[i+6]+reduced_w[i+7]+reduced_w[i+8]+reduced_w[i+9]+reduced_w[i+10]+reduced_w[i+11]+reduced_w[i+12]+reduced_w[i+13]+reduced_w[i+14]+reduced_w[i+15]+reduced_w[i+16]+reduced_w[i+17]+reduced_w[i+18]+reduced_w[i+19]
+endfor
+
+if(druckenSumme == 1)
+	Print "w,0,x für kein Graph"
+	Display
+	AppendtoGraph Summe vs MedianEnergy
+	ModifyGraph mode=4
+	ModifyGraph rgb=(0,0,0)
+	Label left "norm. PES intensity (arb. u.)"
+	Label bottom "\\f02 E - E\\f00\\BF\\M (eV)"
+	ModifyGraph minor(bottom)=1
+	Legend/C/N=text0/J/A=RC/X=-2.25/Y=5.00
+elseif(druckenSumme == 0)
+	Print "w,1,x für Graphen"
+endif
+
+variable o
+make /N=(above0+below0) /O EnergyInt
+make /N=(above0+below0) /O EnergyIntx
+
+	//do the integration in 0.1 eV steps	ABOVE 0 eV
+	
+	for(o=0;o<above0;o+=1)	
+		EnergyInt[o+below0] = Summe[o+21]
+		EnergyIntx[o+below0]= MedianEnergy[o+21]
+	endfor
+	
+		for(o=0;o<above0;o+=1)	
+		EnergyInt[o+below0] = Summe[o+21]
+		EnergyIntx[o+below0]= MedianEnergy[o+21]
+	endfor
+o=0
+variable firstpoint = EnergyInt[o+below0]
+
+	for(o=0;o<above0;o+=1)
+		EnergyInt[o+below0] = EnergyInt[o+below0]+EnergyInt[(o-1)+below0]
+		EnergyInt[below0]= 0
+	endfor
+	
+	for(o=0;o<above0;o+=1)
+		EnergyInt[o+below0] = EnergyInt[o+below0]+firstpoint
+	endfor
+	
+// Integration BELOW 0 eV in 0.1 eV steps
+
+	for(o=0;o<below0;o+=1)	
+		EnergyInt[o] = Summe[-o+20]
+		EnergyIntx[o]= MedianEnergy[-o+20]
+	endfor
+	
+o=0
+variable firstpointbelow = EnergyInt[o],k=0
+
+	for(o=0;o<below0;o+=1)
+		EnergyInt[o] = EnergyInt[o]+EnergyInt[(o-1)]
+		EnergyInt[k]= 0
+	endfor
+	
+	for(o=0;o<below0;o+=1)
+		EnergyInt[o] = (EnergyInt[o]+firstpointbelow)*-1
+	endfor
+	
+sort EnergyIntx EnergyIntx,EnergyInt
+
+	variable Energysteps
+	 String baseName = "Energystep"
+	    		for(i=0; i<(above0+below0); i+=1)
+	    			String xName
+				sprintf xName, "%s%d", baseName, i
+				Make/O/N= (1) $xName
+				Wave xWave = $xName
+				xWave = EnergyInt[i]
+				endfor
+			if(druckenTimeevolution == 1)
+				Display
+				AppendtoGraph xWave
+				ModifyGraph mode=4
+				ModifyGraph rgb=(0,0,0)
+				Label left "n\\B+/- \\M(t)"
+				Label bottom "time delay (fs)"
+				ModifyGraph minor(bottom)=1
+				Legend/C/N=text0/J/A=RC/X=-2.25/Y=5.00
+				ModifyGraph width=400,height=300
+		endif
+// Make waves and put values in
+//do the integration in 0.1 eV steps	ABOVE 0 eV
+duplicate /O Summe SummeW
+duplicate /O EnergyInt EnergyIntW
+print n
+for(i=0;i<(n/20);i+=1)
+SummeW [i]= Summe[i]*MedianEnergy[i]
+endfor
+	for(o=0;o<above0;o+=1)	
+		EnergyIntW[o+below0] = SummeW[o+21]
+		EnergyIntx[o+below0]= MedianEnergy[o+21]
+	endfor
+	
+o=0
+variable firstpointW = EnergyIntW[o+below0]
+
+	for(o=0;o<above0;o+=1)
+		EnergyIntW[o+below0] = EnergyIntW[o+below0]+EnergyIntW[(o-1)+below0]
+		EnergyIntW[below0]= 0
+	endfor
+	
+	for(o=0;o<above0;o+=1)
+		EnergyIntW[o+below0] = EnergyIntW[o+below0]+firstpointW
+	endfor
+	
+// Integration BELOW 0 eV in 0.1 eV steps
+
+	for(o=0;o<below0;o+=1)	
+		EnergyIntW[o] = SummeW[-o+20]
+		EnergyIntx[o]= MedianEnergy[-o+20]
+	endfor
+	
+o=0
+variable firstpointbelowW = EnergyInt[o],kW=0
+
+	for(o=0;o<below0;o+=1)
+		EnergyIntW[o] = EnergyIntW[o]+EnergyIntW[(o-1)]
+		EnergyIntW[k]= 0
+	endfor
+	
+	for(o=0;o<below0;o+=1)
+		EnergyIntW[o] = EnergyIntW[o]+firstpointbelowW
+	endfor
+	
+sort EnergyIntx EnergyIntx,EnergyIntW
+
+String baseNameW ="EnergystepW"
+	for(i=0; i<(below0+above0); i+=1)
+	    		String xNameW
+			sprintf xNameW, "%s%d", baseNameW, i
+			Make/O/N= (1) $xNameW
+			Wave xWaveW = $xNameW
+			xWaveW = EnergyIntW[i]
+		if(druckenTimeevolution == 1)
+				Display
+				AppendtoGraph xWaveW
+				ModifyGraph mode=4
+				ModifyGraph rgb=(0,0,0)
+				Label left "energy density (J/cm²)"
+				Label bottom "time delay (fs)"
+				ModifyGraph minor(bottom)=1
+				Legend/C/N=text0/J/A=RC/X=-2.25/Y=5.00
+				ModifyGraph width=400,height=300
+		endif
+	endfor
+// Make waves and put values in
+SetDataFolder ::
+Print "Finish"

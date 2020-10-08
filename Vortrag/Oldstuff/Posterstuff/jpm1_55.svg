@@ -1,0 +1,196 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg  viewBox="9.3 13.64 34.4444 34.4444" width="62mm" height="62mm" version="1.1" 
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- The red cross marker -->
+<defs>
+<!-- Show outline of canvas using 'rect' element with one central gray quartering -->
+<desc>
+ The rectangle for the outline of the canvas with the quartering
+ </desc>
+<g id="page frame with quartering" >
+<rect x="0.6" y="0.6" width="60.8" height="60.8" fill="none"  stroke="black" stroke-width="0.075" /> 
+<!-- The vertical marker line -->
+<line x1="31"  y1="0.675"  x2="31"  y2="61.325" stroke="lightgray" opacity="0.5"  />  
+<!-- The horizontal marker line -->
+<line x1="0.675"  y1="31"  x2="61.325"  y2="31" stroke="lightgray" opacity="0.5" />  
+</g>
+</defs>
+<!-- The upper molding cutter hole -->
+ <defs>  <polyline points="-0.870149 -0.326073 -0.950041 -0.464452 -1.00469 -0.614601 -1.03244 -0.771959 -1.03244 -0.931745 -1.00469 -1.0891 -0.950041 -1.23925 -0.870149 -1.37763 -0.76744 -1.50003 -0.645038 -1.60274 -0.506659 -1.68263 -0.35651 -1.73728 -0.199152 -1.76503 -0.0393665 -1.76503 0.117992 -1.73728 0.268141 -1.68263 0.406519 -1.60274 0.528922 -1.50003 0.63163 -1.37763 0.711523 -1.23925 0.766173 -1.0891 0.793919 -0.931745 0.793919 -0.771959 0.766173 -0.614601 0.711523 -0.464452 0.63163 -0.326073 0.528922 -0.203671 0.406519 -0.100962  " style="stroke:red; stroke-width:0.3; fill:yellow; fill-opacity:0.6; stroke-opacity:0.6;   " id="upper hole of molding cutter" />  </defs>
+ <!-- The lower molding cutter hole -->
+ <defs>  <polyline points="-7.26924 5.27366 -7.40762 5.35355 -7.55777 5.4082 -7.71512 5.43595 -7.87491 5.43595 -8.03227 5.4082 -8.18242 5.35355 -8.3208 5.27366 -8.4432 5.17095 -8.54591 5.04855 -8.6258 4.91017 -8.68045 4.76002 -8.7082 4.60266 -8.7082 4.44288 -8.68045 4.28552 -8.6258 4.13537 -8.54591 3.99699 -8.4432 3.87459 -8.3208 3.77188 -8.18242 3.69199 -8.03227 3.63734 -7.87491 3.60959 -7.71512 3.60959 -7.55777 3.63734 -7.40762 3.69199 -7.26924 3.77188 -7.14684 3.87459 -7.04413 3.99699  " style="stroke:red; stroke-width:0.3; fill:yellow; fill-opacity:0.6; stroke-opacity:0.6;   " id="lower hole of molding cutter" />  </defs>
+ <defs>
+ <g id="MgO" style="stroke:black; stroke-width:0.1; fill:ivory;" >
+<polyline points="0 0 5.2769 7.5362 5.25536 6.82391 -0.119259 -0.851852 0 0 "  /> 
+<polyline points="-7.5362 5.2769 0 0 -0.119259 -0.851852 -7.79502 4.52277 -7.5362 5.2769 " /> 
+<polyline points="-2.2593 12.8131 5.2769 7.5362 5.25536 6.82391 -2.42039 12.1985 -2.2593 12.8131 "  /> 
+<polyline points="-7.5362 5.2769 -2.2593 12.8131 -2.42039 12.1985 -7.79502 4.52277 -7.5362 5.2769 " />  
+<polyline points="-7.79502 4.52277 -2.42039 12.1985 5.25536 6.82391 -0.119259 -0.851852 -7.79502 4.52277 " /> 
+ </g>
+ </defs>
+<use xlink:href="#MgO" transform="translate(31,31)  " /> 
+<defs>
+ <g id="upper left iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="-0.0524443 -0.401284 1.40805 1.68452 1.35865 1.24945 -0.116185 -0.856836 -0.0524443 -0.401284 " id="back side upper left iron" />
+  <polyline points="-2.30511 1.17605 -0.0524443 -0.401284 -0.116185 -0.856836 -2.39097 0.735985 -2.30511 1.17605 "  id="left side upper left iron" /> 
+<polyline points="-0.844617 3.26186 1.40805 1.68452 1.35865 1.24945 -0.916135 2.84227 -0.844617 3.26186 "  id="right side upper left iron" />
+ <polyline points="-2.30511 1.17605 -0.844617 3.26186 -0.916135 2.84227 -2.39097 0.735985 -2.30511 1.17605 "  id="front side upper left iron" />
+   <polyline points="-2.39097 0.735985 -0.916135 2.84227 1.35865 1.24945 -0.116185 -0.856836 -2.39097 0.735985 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#upper left iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="upper middle iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="1.52489 1.85138 3.16065 4.18748 3.12845 3.77698 1.47664 1.41795 1.52489 1.85138 " id="back side upper left iron" />
+  <polyline points="-0.727777 3.42872 1.52489 1.85138 1.47664 1.41795 -0.798148 3.01077 -0.727777 3.42872 "  id="left side upper left iron" /> 
+<polyline points="0.907978 5.76482 3.16065 4.18748 3.12845 3.77698 0.853666 5.3698 0.907978 5.76482 "  id="right side upper left iron" />
+ <polyline points="-0.727777 3.42872 0.907978 5.76482 0.853666 5.3698 -0.798148 3.01077 -0.727777 3.42872 "  id="front side upper left iron" />
+   <polyline points="-0.798148 3.01077 0.853666 5.3698 3.12845 3.77698 1.47664 1.41795 -0.798148 3.01077 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#upper middle iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="upper right iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="3.27749 4.35435 4.91324 6.69045 4.89825 6.30452 3.24644 3.94549 3.27749 4.35435 " id="back side upper left iron" />
+  <polyline points="1.02482 5.93168 3.27749 4.35435 3.24644 3.94549 0.971653 5.53831 1.02482 5.93168 "  id="left side upper left iron" /> 
+<polyline points="2.66057 8.26778 4.91324 6.69045 4.89825 6.30452 2.62347 7.89734 2.66057 8.26778 "  id="right side upper left iron" />
+ <polyline points="1.02482 5.93168 2.66057 8.26778 2.62347 7.89734 0.971653 5.53831 1.02482 5.93168 "  id="front side upper left iron" />
+   <polyline points="0.971653 5.53831 2.62347 7.89734 4.89825 6.30452 3.24644 3.94549 0.971653 5.53831 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#upper right iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="middle left iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="-2.47198 1.29289 -1.01148 3.3787 -1.17002 2.47186 -2.66159 0.341676 -2.47198 1.29289 " id="back side upper left iron" />
+  <polyline points="-4.80808 2.92865 -2.47198 1.29289 -2.66159 0.341676 -5.0474 2.01223 -4.80808 2.92865 "  id="left side upper left iron" /> 
+<polyline points="-3.34758 5.01445 -1.01148 3.3787 -1.17002 2.47186 -3.55583 4.14242 -3.34758 5.01445 "  id="right side upper left iron" />
+ <polyline points="-4.80808 2.92865 -3.34758 5.01445 -3.55583 4.14242 -5.0474 2.01223 -4.80808 2.92865 "  id="front side upper left iron" />
+   <polyline points="-5.0474 2.01223 -3.55583 4.14242 -1.17002 2.47186 -2.66159 0.341676 -5.0474 2.01223 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#middle left iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="middle middle iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="-0.894642 3.54556 0.741114 5.88166 0.619861 5.02808 -1.0507 2.64227 -0.894642 3.54556 " id="back side upper left iron" />
+  <polyline points="-3.23074 5.18131 -0.894642 3.54556 -1.0507 2.64227 -3.4365 4.31283 -3.23074 5.18131 "  id="left side upper left iron" /> 
+<polyline points="-1.59499 7.51741 0.741114 5.88166 0.619861 5.02808 -1.76594 6.69864 -1.59499 7.51741 "  id="right side upper left iron" />
+ <polyline points="-3.23074 5.18131 -1.59499 7.51741 -1.76594 6.69864 -3.4365 4.31283 -3.23074 5.18131 "  id="front side upper left iron" />
+   <polyline points="-3.4365 4.31283 -1.76594 6.69864 0.619861 5.02808 -1.0507 2.64227 -3.4365 4.31283 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#middle middle iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="middle right iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="0.857953 6.04852 2.49371 8.38462 2.40974 7.5843 0.739186 5.19849 0.857953 6.04852 " id="back side upper left iron" />
+  <polyline points="-1.47815 7.68428 0.857953 6.04852 0.739186 5.19849 -1.64662 6.86905 -1.47815 7.68428 "  id="left side upper left iron" /> 
+<polyline points="0.157608 10.0204 2.49371 8.38462 2.40974 7.5843 0.02394 9.25486 0.157608 10.0204 "  id="right side upper left iron" />
+ <polyline points="-1.47815 7.68428 0.157608 10.0204 0.02394 9.25486 -1.64662 6.86905 -1.47815 7.68428 "  id="front side upper left iron" />
+   <polyline points="-1.64662 6.86905 0.02394 9.25486 2.40974 7.5843 0.739186 5.19849 -1.64662 6.86905 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#middle right iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="lower left iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="-4.97494 3.04549 -3.51445 5.13129 -3.94725 3.35439 -5.47124 1.1779 -4.97494 3.04549 " id="back side upper left iron" />
+  <polyline points="-7.31104 4.68124 -4.97494 3.04549 -5.47124 1.1779 -7.90891 2.88477 -7.31104 4.68124 "  id="left side upper left iron" /> 
+<polyline points="-5.85055 6.76704 -3.51445 5.13129 -3.94725 3.35439 -6.38492 5.06126 -5.85055 6.76704 "  id="right side upper left iron" />
+ <polyline points="-7.31104 4.68124 -5.85055 6.76704 -6.38492 5.06126 -7.90891 2.88477 -7.31104 4.68124 "  id="front side upper left iron" />
+   <polyline points="-7.90891 2.88477 -6.38492 5.06126 -3.94725 3.35439 -5.47124 1.1779 -7.90891 2.88477 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#lower left iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="lower middle iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="-3.39761 5.29815 -1.76185 7.63425 -2.11845 5.96618 -3.82533 3.52851 -3.39761 5.29815 " id="back side upper left iron" />
+  <polyline points="-5.73371 6.93391 -3.39761 5.29815 -3.82533 3.52851 -6.263 5.23538 -5.73371 6.93391 "  id="left side upper left iron" /> 
+<polyline points="-4.09795 9.27001 -1.76185 7.63425 -2.11845 5.96618 -4.55612 7.67305 -4.09795 9.27001 "  id="right side upper left iron" />
+ <polyline points="-5.73371 6.93391 -4.09795 9.27001 -4.55612 7.67305 -6.263 5.23538 -5.73371 6.93391 "  id="front side upper left iron" />
+   <polyline points="-6.263 5.23538 -4.55612 7.67305 -2.11845 5.96618 -3.82533 3.52851 -6.263 5.23538 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#lower middle iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="lower right iron element" style="stroke:black; stroke-width:0.1; fill:lightsteelblue;"  >
+<polyline points="-1.64501 7.80112 -0.00925639 10.1372 -0.289659 8.57797 -1.99653 6.1403 -1.64501 7.80112 " id="back side upper left iron" />
+  <polyline points="-3.98111 9.43687 -1.64501 7.80112 -1.99653 6.1403 -4.4342 7.84717 -3.98111 9.43687 "  id="left side upper left iron" /> 
+<polyline points="-2.34536 11.773 -0.00925639 10.1372 -0.289659 8.57797 -2.72733 10.2848 -2.34536 11.773 "  id="right side upper left iron" />
+ <polyline points="-3.98111 9.43687 -2.34536 11.773 -2.72733 10.2848 -4.4342 7.84717 -3.98111 9.43687 "  id="front side upper left iron" />
+   <polyline points="-4.4342 7.84717 -2.72733 10.2848 -0.289659 8.57797 -1.99653 6.1403 -4.4342 7.84717 "  id="top side upper left iron" />
+</g>
+ </defs>
+<use xlink:href="#lower right iron element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="upper left gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="-0.116185 -0.856836 1.35865 1.24945 1.13546 -0.716172 -0.404158 -2.91497 -0.116185 -0.856836 " /> 
+<polyline points="-2.39097 0.735985 -0.116185 -0.856836 -0.404158 -2.91497 -2.77886 -1.25219 -2.39097 0.735985 " /> 
+ <polyline points="-0.916135 2.84227 1.35865 1.24945 1.13546 -0.716172 -1.23924 0.946612 -0.916135 2.84227 " /> 
+<polyline points="-2.39097 0.735985 -0.916135 2.84227 -1.23924 0.946612 -2.77886 -1.25219 -2.39097 0.735985 " /> 
+<polyline points="-2.77886 -1.25219 -1.23924 0.946612 1.13546 -0.716172 -0.404158 -2.91497 -2.77886 -1.25219 "  /> </g> </defs>
+<use xlink:href="#upper left gold element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="upper middle gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="1.47664 1.41795 3.12845 3.77698 3.10506 3.4788 1.44158 1.1031 1.47664 1.41795 " /> 
+<polyline points="-0.798148 3.01077 1.47664 1.41795 1.44158 1.1031 -0.849265 2.70717 -0.798148 3.01077 " /> 
+ <polyline points="0.853666 5.3698 3.12845 3.77698 3.10506 3.4788 0.814215 5.08287 0.853666 5.3698 " /> 
+<polyline points="-0.798148 3.01077 0.853666 5.3698 0.814215 5.08287 -0.849265 2.70717 -0.798148 3.01077 " /> 
+<polyline points="-0.849265 2.70717 0.814215 5.08287 3.10506 3.4788 1.44158 1.1031 -0.849265 2.70717 "  /> </g> </defs>
+<use xlink:href="#upper middle gold element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="upper right gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="3.24644 3.94549 4.89825 6.30452 4.86512 5.45147 3.17781 3.04174 3.24644 3.94549 " /> 
+<polyline points="0.971653 5.53831 3.24644 3.94549 3.17781 3.04174 0.854138 4.66879 0.971653 5.53831 " /> 
+ <polyline points="2.62347 7.89734 4.89825 6.30452 4.86512 5.45147 2.54145 7.07852 2.62347 7.89734 " /> 
+<polyline points="0.971653 5.53831 2.62347 7.89734 2.54145 7.07852 0.854138 4.66879 0.971653 5.53831 " /> 
+<polyline points="0.854138 4.66879 2.54145 7.07852 4.86512 5.45147 3.17781 3.04174 0.854138 4.66879 "  /> </g> </defs>
+<use xlink:href="#upper right gold element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="middle left gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="-2.66159 0.341676 -1.17002 2.47186 -1.50825 0.537275 -3.06611 -1.68758 -2.66159 0.341676 " /> 
+<polyline points="-5.0474 2.01223 -2.66159 0.341676 -3.06611 -1.68758 -5.55795 0.0572227 -5.0474 2.01223 " /> 
+ <polyline points="-3.55583 4.14242 -1.17002 2.47186 -1.50825 0.537275 -4.00009 2.28208 -3.55583 4.14242 " /> 
+<polyline points="-5.0474 2.01223 -3.55583 4.14242 -4.00009 2.28208 -5.55795 0.0572227 -5.0474 2.01223 " /> 
+<polyline points="-5.55795 0.0572227 -4.00009 2.28208 -1.50825 0.537275 -3.06611 -1.68758 -5.55795 0.0572227 "  /> </g> </defs>
+<use xlink:href="#middle left gold element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="middle middle gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="-1.0507 2.64227 0.619861 5.02808 0.578288 4.73542 -1.1042 2.33258 -1.0507 2.64227 " /> 
+<polyline points="-3.4365 4.31283 -1.0507 2.64227 -1.1042 2.33258 -3.50705 4.01507 -3.4365 4.31283 " /> 
+ <polyline points="-1.76594 6.69864 0.619861 5.02808 0.578288 4.73542 -1.82456 6.41791 -1.76594 6.69864 " /> 
+<polyline points="-3.4365 4.31283 -1.76594 6.69864 -1.82456 6.41791 -3.50705 4.01507 -3.4365 4.31283 " /> 
+<polyline points="-3.50705 4.01507 -1.82456 6.41791 0.578288 4.73542 -1.1042 2.33258 -3.50705 4.01507 "  /> </g> </defs>
+<use xlink:href="#middle middle gold element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="middle right gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="0.739186 5.19849 2.40974 7.5843 2.32213 6.74917 0.615255 4.3115 0.739186 5.19849 " /> 
+<polyline points="-1.64662 6.86905 0.739186 5.19849 0.615255 4.3115 -1.82241 6.01838 -1.64662 6.86905 " /> 
+ <polyline points="0.02394 9.25486 2.40974 7.5843 2.32213 6.74917 -0.11554 8.45605 0.02394 9.25486 " /> 
+<polyline points="-1.64662 6.86905 0.02394 9.25486 -0.11554 8.45605 -1.82241 6.01838 -1.64662 6.86905 " /> 
+<polyline points="-1.82241 6.01838 -0.11554 8.45605 2.32213 6.74917 0.615255 4.3115 -1.82241 6.01838 "  /> </g> </defs>
+<use xlink:href="#middle right gold element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="lower left gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="-5.47124 1.1779 -3.94725 3.35439 -4.4194 1.41595 -6.01266 -0.85947 -5.47124 1.1779 " /> 
+<polyline points="-7.90891 2.88477 -5.47124 1.1779 -6.01266 -0.85947 -8.56114 0.92499 -7.90891 2.88477 " /> 
+ <polyline points="-6.38492 5.06126 -3.94725 3.35439 -4.4194 1.41595 -6.96787 3.20041 -6.38492 5.06126 " /> 
+<polyline points="-7.90891 2.88477 -6.38492 5.06126 -6.96787 3.20041 -8.56114 0.92499 -7.90891 2.88477 " /> 
+<polyline points="-8.56114 0.92499 -6.96787 3.20041 -4.4194 1.41595 -6.01266 -0.85947 -8.56114 0.92499 "  /> </g> </defs>
+<use xlink:href="#lower left gold element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="lower middle gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="-3.82533 3.52851 -2.11845 5.96618 -2.18092 5.67396 -3.90026 3.2185 -3.82533 3.52851 " /> 
+<polyline points="-6.263 5.23538 -3.82533 3.52851 -3.90026 3.2185 -6.35572 4.93783 -6.263 5.23538 " /> 
+ <polyline points="-4.55612 7.67305 -2.11845 5.96618 -2.18092 5.67396 -4.63639 7.39329 -4.55612 7.67305 " /> 
+<polyline points="-6.263 5.23538 -4.55612 7.67305 -4.63639 7.39329 -6.35572 4.93783 -6.263 5.23538 " /> 
+<polyline points="-6.35572 4.93783 -4.63639 7.39329 -2.18092 5.67396 -3.90026 3.2185 -6.35572 4.93783 "  /> </g> </defs>
+<use xlink:href="#lower middle gold element" transform="translate(31,31)  " /> 
+<defs>
+ <g id="lower right gold element" style="stroke:black; stroke-width:0.1; fill:gold;"  >
+<polyline points="-1.99653 6.1403 -0.289659 8.57797 -0.439207 7.74637 -2.18401 5.25453 -1.99653 6.1403 " /> 
+<polyline points="-4.4342 7.84717 -1.99653 6.1403 -2.18401 5.25453 -4.67585 6.99933 -4.4342 7.84717 " /> 
+ <polyline points="-2.72733 10.2848 -0.289659 8.57797 -0.439207 7.74637 -2.93105 9.49117 -2.72733 10.2848 " /> 
+<polyline points="-4.4342 7.84717 -2.72733 10.2848 -2.93105 9.49117 -4.67585 6.99933 -4.4342 7.84717 " /> 
+<polyline points="-4.67585 6.99933 -2.93105 9.49117 -0.439207 7.74637 -2.18401 5.25453 -4.67585 6.99933 "  /> </g> </defs>
+<use xlink:href="#lower right gold element" transform="translate(31,31)  " /> 
+</svg>
