@@ -1,1 +1,0 @@
-Aufgenommene Punkte: 0Scans: 10Bias Voltage: -0.405273 VTemperatur: 0.000000 Kx=0.00 y=0.00 z=0.00
